@@ -1,0 +1,6 @@
+
+.dockerignore
+Makefile
+publish.sh
+README.md
+run-docker.sh

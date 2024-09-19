@@ -1,0 +1,62 @@
+
+
+// helpers
+@import "./sass/helpers/variables";
+@import "./sass/helpers/functions";
+@import "./sass/helpers/mixins";
+
+// base
+@import "./sass/base/base";
+
+
+// components
+@import "./sass/components/section-title";
+@import "./sass/components/buttons";
+@import "./sass/components/form";
+@import "./sass/components/social-links";
+@import "./sass/components/page-title";
+@import "./sass/components/preloader";
+@import "./sass/components/blog-sidebar";
+@import "./sass/components/pagination";
+
+// layout
+@import "./sass/layout/header";
+@import "./sass/layout/hero-slider";
+@import "./sass/layout/footer";
+
+// components
+@import "./sass/components/sticky-header";
+
+
+// page
+@import "./sass/page/home-default";
+
+@import "./sass/page/home-style-2";
+
+@import "./sass/page/home-style-3";
+
+@import "./sass/page/home-style-4";
+
+@import "./sass/page/event-single";
+
+@import "./sass/page/cause-single";
+
+@import "./sass/page/donate";
+
+@import "./sass/page/volunteer";
+
+@import "./sass/page/volunteer-single";
+
+@import "./sass/page/service-single";
+
+@import "./sass/page/faq";
+
+@import "./sass/page/_blog";
+
+@import "./sass/page/_blog-single";
+
+@import "./sass/page/contact";
+
+@import "./sass/page/auth-page";
+
+@import "./sass/page/error-404";
