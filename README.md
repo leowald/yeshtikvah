@@ -15,6 +15,7 @@ This project is built with React, Node, headless Wordpress and uses the followin
 - Axios  
 - JSON Server
 - Docker Containers
+- Vitest
 
 Please follow these instructions carefully to setup this project on your machine. 
 
@@ -33,7 +34,7 @@ You can then go to:
 http://localhost:8080/  - phpmyadmin
 http://localhost:8000 – wordpress
 http://localhost:5173 – main application
-http://locationhost:3000 – json server
+http://localhost:3000 – json server
 
 ## Running Tests
 
