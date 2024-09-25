@@ -1,0 +1,50 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="src/hooks/useInput" />
+
+## useInput
+`src/hooks/useInput`
+
+**AST Node Type:** *FunctionDeclaration*
+
+#### JSDoc annotations:
+
+
+
+```bash
+@param {string} defaultValue
+
+@param {*} validationFn
+
+@returns
+
+
+Function that prints a person's name and optionally age if provided.
+
+@param {Person} person The person.
+```
+
+#### Code:
+
+```ts
+export function useInput(defaultValue, validationFn) {
+    const [formInput, updateFormInput] = useState(defaultValue);
+    const [didEdit, setDidEdit] = useState(false);
+    const valueIsValid = validationFn(formInput);
+    function changeHandler(event) {
+        updateFormInput(event.target.value);
+        setDidEdit(false);
+    }
+    function handleInputBlur() {
+        setDidEdit(true);
+    }
+    return {
+        value: formInput,
+        changeHandler,
+        handleInputBlur,
+        hasError: didEdit & !valueIsValid,
+    };
+}
+
+```
+
