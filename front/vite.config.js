@@ -12,7 +12,7 @@ export default defineConfig({
   },
 
   server: {
-    host: "0.0.0.0",
+    host: true,
     port: 5173, // This is the port which we will use in docker
     open: true,
     // Thanks @sergiomoura for the window fix
@@ -22,3 +22,5 @@ export default defineConfig({
     },
   },
 });
+
+// host: "0.0.0.0",

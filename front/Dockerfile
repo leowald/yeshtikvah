@@ -1,5 +1,9 @@
 FROM node:20.16.0
 
+RUN apt-get update
+
+RUN apt-get install -y xdg-utils # For Storybook
+
 WORKDIR /app/front
 
 COPY package.json .

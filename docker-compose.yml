@@ -59,13 +59,13 @@ services:
     container_name: react-app-test
     build: ./front
     volumes:
-      - ./front/src:/app/front/src
-      - ./front/tests:/app/front/test
-    environment:
-      - CI=true
+     - ./front/src:/app/front/src
+     - ./front/tests:/app/front/tests
     command: npm test
     ports:
-      - '51204:51204'
+     - '51204:51204'
+    stdin_open: true 
+    tty: true
 volumes:
   my-db-volume:
      
