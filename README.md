@@ -39,4 +39,10 @@ http://localhost:3000 – json server
 
 With your container running visit:
 
-http://localhost:51204/**vitest**/
+http://localhost:51204/vitest/
+
+## Documentation
+
+With your container running visit:
+
+http://localhost:6006/
