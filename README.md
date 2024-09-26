@@ -28,7 +28,7 @@ Please follow these instructions carefully to setup this project on your machine
 ## Running the App
 
 Now that you have configured your environment variables, you can run the React app using the following commands:
-docker compose up -d --build
+docker compose up -d front --build
 You can then go to:
 http://localhost:8080/ - phpmyadmin
 http://localhost:8000 – wordpress
@@ -37,12 +37,12 @@ http://localhost:3000 – json server
 
 ## Running Tests
 
-With your container running visit:
+Run docker compose up test --build and the visit:
 
 http://localhost:51204/vitest/
 
 ## Documentation
 
-With your container running visit:
+Run docker compose up storybook --build and the visit:
 
 http://localhost:6006/
