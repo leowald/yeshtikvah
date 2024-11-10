@@ -5,6 +5,7 @@ import logo from "./assets/images/logo2.png";
 import slider5 from "./assets/images/slider/2a.png";
 import slider3 from "./assets/images/slider/3.png";
 import slider6 from "./assets/images/slider/3a.png";
+import Demo from "./components/Demo.jsx";
 
 import "./App.scss";
 
@@ -39,6 +40,8 @@ function App() {
                         <span class="icon-bar last-angle"></span>
                       </button>
                     </div>
+
+                    
                   </div>
                   <div class="col-lg-3 col-md-4 col-6">
                     <div class="navbar-header">
@@ -200,8 +203,9 @@ function App() {
                     <a href="" class="theme-btn">
                       INSPIRE OTHERS
                     </a>
+                    
                   </div>
-
+                  <Demo></Demo>
                   <p class="donation">
                     This site has been created as a zechus for a Refuah Shelema
                     for Aryeh Ben Yehudis.
