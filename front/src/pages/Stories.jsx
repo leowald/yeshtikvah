@@ -4,4 +4,4 @@ export default function Stories() {
       <div>
       </div>
     );
-  }
+}

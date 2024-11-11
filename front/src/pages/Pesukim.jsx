@@ -4,4 +4,4 @@ export default function Pesukim() {
       <div>
       </div>
     );
-  }
+}

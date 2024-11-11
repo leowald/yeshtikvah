@@ -4,4 +4,4 @@ export default function Shiurim() {
       <div>
       </div>
     );
-  }
+}
