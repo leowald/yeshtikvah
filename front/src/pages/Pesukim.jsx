@@ -1,7 +1,7 @@
 export default function Pesukim() {
 
-    return (
-      <div>
-      </div>
-    );
+  return (
+    <div>
+    </div>
+  );
 }
