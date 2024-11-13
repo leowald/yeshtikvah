@@ -5,6 +5,7 @@ import logo from "./assets/images/logo2.png";
 import slider5 from "./assets/images/slider/2a.png";
 import slider3 from "./assets/images/slider/3.png";
 import slider6 from "./assets/images/slider/3a.png";
+//import.meta.env.IMAGE_PATH;
 
 import "./App.scss";
 
@@ -21,11 +22,22 @@ function App() {
     arrows: false,
     autoplaySpeed: 5000,
   };
+  const images = import.meta.env.VITE_IMAGE_PATH;
+  console.log(images);
+  console.log(import.meta.env.VITE_SOME_KEY);
+  console.log(import.meta.env.REACT_TEST);
+  console.log(import.meta.env.REACT_TEN);
+  console.log(import.meta.env.VITE_TEN);
 
   return (
     <Provider>
       <div class="page-wrapper">
         <header id="header">
+          <h3>hi {images}</h3>
+          <img
+            src="../../wp/wp-content/uploads/assets/images/logo2.png"
+            alt="logo"
+          />
           <div class="wpo-site-header wpo-site-header-s1 wpo-site-header-s2">
             <nav class="navigation navbar navbar-expand-lg navbar-light">
               <div class="container-fluid">
