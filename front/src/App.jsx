@@ -21,11 +21,22 @@ function App() {
     arrows: false,
     autoplaySpeed: 5000,
   };
+  const images = import.meta.env.VITE_IMAGE_PATH;
+  const base = import.meta.env.BASE_URL;
+  //console.log(pic);
+  console.log(images);
+  //console.log(images+'\checkout\img-4.png');
+  //console.log(import.meta.env.VITE_SOME_KEY);
+  //console.log(import.meta.env.REACT_TEST);
+  //console.log(import.meta.env.REACT_TEN);
+  //console.log(import.meta.env.VITE_TEN);
 
   return (
     <Provider>
       <div class="page-wrapper">
         <header id="header">
+          <h3>hi {images}</h3>
+          <img src={import.meta.env.VITE_IMAGE_PATH} alt="logo" />
           <div class="wpo-site-header wpo-site-header-s1 wpo-site-header-s2">
             <nav class="navigation navbar navbar-expand-lg navbar-light">
               <div class="container-fluid">
