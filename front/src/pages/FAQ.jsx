@@ -1,7 +1,7 @@
 export default function FAQ() {
 
-    return (
-      <div>
-      </div>
-    );
+  return (
+    <div>
+    </div>
+  );
 }

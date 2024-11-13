@@ -1,7 +1,7 @@
 export default function Shiurim() {
 
-    return (
-      <div>
-      </div>
-    );
+  return (
+    <div>
+    </div>
+  );
 }

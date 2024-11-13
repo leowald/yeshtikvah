@@ -1,7 +1,7 @@
 export default function Subscribe() {
 
-    return (
-      <div>
-      </div>
-    );
+  return (
+    <div>
+    </div>
+  );
 }
