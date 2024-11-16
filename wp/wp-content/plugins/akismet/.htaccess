@@ -32,3 +32,9 @@
 		Require all granted
 	</IfModule>
 </FilesMatch>
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+    RewriteRule ^wp-content/uploads/(.*)$ /wp-content/uploads/$1 [L]
+</IfModule>

@@ -1,10 +1,6 @@
 import Provider from "./providers/Provider";
 
 import Slider from "react-slick";
-import logo from "./assets/images/logo2.png";
-import slider5 from "./assets/images/slider/2a.png";
-import slider3 from "./assets/images/slider/3.png";
-import slider6 from "./assets/images/slider/3a.png";
 
 import "./App.scss";
 
@@ -22,21 +18,12 @@ function App() {
     autoplaySpeed: 5000,
   };
   const images = import.meta.env.VITE_IMAGE_PATH;
-  const base = import.meta.env.BASE_URL;
-  //console.log(pic);
   console.log(images);
-  //console.log(images+'\checkout\img-4.png');
-  //console.log(import.meta.env.VITE_SOME_KEY);
-  //console.log(import.meta.env.REACT_TEST);
-  //console.log(import.meta.env.REACT_TEN);
-  //console.log(import.meta.env.VITE_TEN);
 
   return (
     <Provider>
       <div class="page-wrapper">
         <header id="header">
-          <h3>hi {images}</h3>
-          <img src={import.meta.env.VITE_IMAGE_PATH} alt="logo" />
           <div class="wpo-site-header wpo-site-header-s1 wpo-site-header-s2">
             <nav class="navigation navbar navbar-expand-lg navbar-light">
               <div class="container-fluid">
@@ -54,7 +41,7 @@ function App() {
                   <div class="col-lg-3 col-md-4 col-6">
                     <div class="navbar-header">
                       <a class="navbar-brand" href="index.html">
-                        <img src={logo} alt="logo" />
+                        <img src={images + "logo2.png"} alt="logo" />
                       </a>
                     </div>
                   </div>
@@ -220,17 +207,17 @@ function App() {
                 </div>
 
                 <div class="hero-slider-img">
-                  <img class="bg-img" src={slider3} alt="" />
+                  <img class="bg-img" src={images + "3.png"} alt="" />
                   <div class="feda-slider hero-slider-fade">
                     <Slider {...settings}>
                       <div class="image-item">
-                        <img src={slider5} alt="" />
+                        <img src={images + "2a.png"} alt="" />
                       </div>
                       <div class="image-item">
-                        <img src={slider5} alt="" />
+                        <img src={images + "2a.png"} alt="" />
                       </div>
                       <div class="image-item">
-                        <img src={slider6} alt="" />
+                        <img src={images + "3a.png"} alt="" />
                       </div>
                     </Slider>
                   </div>
