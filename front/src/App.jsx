@@ -17,7 +17,7 @@ function App() {
     arrows: false,
     autoplaySpeed: 5000,
   };
-  
+
   const images = import.meta.env.VITE_IMAGE_PATH;
 
   return (
@@ -41,7 +41,7 @@ function App() {
                   <div class="col-lg-3 col-md-4 col-6">
                     <div class="navbar-header">
                       <a class="navbar-brand" href="index.html">
-                        <img src={images + "logo2.png"} alt="logo" />
+                        <img src={`${images}logo2.png`} alt="logo" />
                       </a>
                     </div>
                   </div>
@@ -207,17 +207,30 @@ function App() {
                 </div>
 
                 <div class="hero-slider-img">
-                  <img class="bg-img" src={images + "3.png"} alt="" />
+                  <img
+                    class="bg-img"
+                    src={`${images}slider.png`}
+                    alt="slider"
+                  />
                   <div class="feda-slider hero-slider-fade">
                     <Slider {...settings}>
                       <div class="image-item">
-                        <img src={images + "2a.png"} alt="" />
+                        <img
+                          src={`${images}kiviti_blue.png`}
+                          alt="kiviti_blue"
+                        />
                       </div>
                       <div class="image-item">
-                        <img src={images + "2a.png"} alt="" />
+                        <img
+                          src={`${images}kiviti_blue.png`}
+                          alt="kiviti_blue"
+                        />
                       </div>
                       <div class="image-item">
-                        <img src={images + "3a.png"} alt="" />
+                        <img
+                          src={`${images}kiviti_green.png`}
+                          alt="kiviti_green"
+                        />
                       </div>
                     </Slider>
                   </div>
