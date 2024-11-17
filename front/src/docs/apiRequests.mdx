@@ -1,20 +1,21 @@
 ### Making api calls using axios
 
-Add an axios import statement to your js file:
-`import axios from 'axios';`
+In our project, the axios baseUrl has been set to point to the JSON server.  
+That means that we do not need to specify it for each call.
 
-You can now use axios to make api requests.
-Some examples using axios calls with async/await:
+Add a statement importing api/axiosClient.js into your js file.
 
+You can now use axiosClient to make api requests. The url will only need to contain
+a subdirectory eg: "/post", etc, and not the full path.
+
+We will be using async/await.
 Note that when using await, the calling function must be an async function.
 
 ##### GET:
 
 ```
-  const getAllData = async(url) =>{
-    const res = await axios.get(url);
+    const res = await axiosClient.get("/posts");
     console.log(res.data);
-}
 ```
 
 ##### POST:
@@ -22,10 +23,8 @@ Note that when using await, the calling function must be an async function.
 dataToPost parameter is a json object.
 
 ```
-  const postData = async(url, dataToPost) =>{
-    const response = await axios.post(url, dataToPost);
+    const response = await axiosClient.post("/comments", dataToPost);
     console.log(response.data);
-}
 ```
 
 ##### PUT:
@@ -34,10 +33,8 @@ pass both the id of the entry to change
 and the changed data as a json object
 
 ```
-  const putData = async(url, id, dataToUpdate) =>{
-    const response = await axios.put(`${url}/${id}`, dataToUpdate);
+    const response = await axiosClient.put(`${url}/${id}`, dataToUpdate);
     console.log(response.data);
-}
 ```
 
 ##### DELETE:
@@ -45,10 +42,8 @@ and the changed data as a json object
 pass the id of the entry to delete
 
 ```
-  const deleteData = async(idToDelete) =>{
-	const response = await axios.delete(`${url}/${idToDelete}`);
+	const response = await axiosClient.delete(`${url}/${idToDelete}`);
 	console.log(response.data);
-}
 ```
 
 ##### Error handing
@@ -58,21 +53,21 @@ The api calls should be made within try/catch blocks to catch errors:
 ```
   const getData = async (url) => {
 	try {
-	const res = await axios.get(url);
-	console.log(res.data);
-} catch (error) {
-	if (error.response) {
-		// Request made but the server responded with an error
-		console.log(error.response.data);
-		console.log(error.response.status);
-		console.log(error.response.headers);
-	} else if (error.request) {
-		// Request made but no response is received from the server.
-		console.log(error.request);
-	} else {
-		// Error occured while setting up the request
-		console.log('Error', error.message);
+		const res = await axiosClient.get(url);
+		console.log(res.data);
+	} catch (error) {
+		if (error.response) {
+			// Request made but the server responded with an error
+			console.log(error.response.data);
+			console.log(error.response.status);
+			console.log(error.response.headers);
+		} else if (error.request) {
+			// Request made but no response is received from the server.
+			console.log(error.request);
+		} else {
+			// Error occured while setting up the request
+			console.log('Error', error.message);
+		}
 	}
-}
 };
 ```
