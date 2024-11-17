@@ -17,8 +17,8 @@ function App() {
     arrows: false,
     autoplaySpeed: 5000,
   };
+  
   const images = import.meta.env.VITE_IMAGE_PATH;
-  console.log(images);
 
   return (
     <Provider>
