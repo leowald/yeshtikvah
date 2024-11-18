@@ -1,10 +1,6 @@
 import Provider from "./providers/Provider";
 
 import Slider from "react-slick";
-import logo from "./assets/images/logo2.png";
-import slider5 from "./assets/images/slider/2a.png";
-import slider3 from "./assets/images/slider/3.png";
-import slider6 from "./assets/images/slider/3a.png";
 
 import "./App.scss";
 
@@ -21,6 +17,8 @@ function App() {
     arrows: false,
     autoplaySpeed: 5000,
   };
+
+  const images = import.meta.env.VITE_IMAGE_PATH;
 
   return (
     <Provider>
@@ -43,7 +41,7 @@ function App() {
                   <div class="col-lg-3 col-md-4 col-6">
                     <div class="navbar-header">
                       <a class="navbar-brand" href="index.html">
-                        <img src={logo} alt="logo" />
+                        <img src={`${images}logo2.png`} alt="logo" />
                       </a>
                     </div>
                   </div>
@@ -209,17 +207,30 @@ function App() {
                 </div>
 
                 <div class="hero-slider-img">
-                  <img class="bg-img" src={slider3} alt="" />
+                  <img
+                    class="bg-img"
+                    src={`${images}slider.png`}
+                    alt="slider"
+                  />
                   <div class="feda-slider hero-slider-fade">
                     <Slider {...settings}>
                       <div class="image-item">
-                        <img src={slider5} alt="" />
+                        <img
+                          src={`${images}kiviti_blue.png`}
+                          alt="kiviti_blue"
+                        />
                       </div>
                       <div class="image-item">
-                        <img src={slider5} alt="" />
+                        <img
+                          src={`${images}kiviti_blue.png`}
+                          alt="kiviti_blue"
+                        />
                       </div>
                       <div class="image-item">
-                        <img src={slider6} alt="" />
+                        <img
+                          src={`${images}kiviti_green.png`}
+                          alt="kiviti_green"
+                        />
                       </div>
                     </Slider>
                   </div>

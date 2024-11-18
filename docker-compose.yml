@@ -15,7 +15,7 @@ services:
     # image: mysql:9.0.0 indicates the MySQL database container image from Docker Hub used in this installation.
     restart: always
     volumes:
-     - my-db-volume:/var/lib/mysql   #named volume so data persists across container shut down
+     - my-db-volume1:/var/lib/mysql   #named volume so data persists across container shut down
      - ./dump.sql:/docker-entrypoint-initdb.d/dump.sql   #pulls in the database the first time to the image?
     env_file: .env
    phpmyadmin:
@@ -84,7 +84,7 @@ services:
       - CHOKIDAR_INTERVAL=1000
     
 volumes:
-  my-db-volume:
+  my-db-volume1:
      
 
    
