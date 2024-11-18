@@ -2,8 +2,9 @@
 
 import { faker } from "@faker-js/faker";
 
-export const Catagories = {
-  catagory: [],
+export const data = {
+  categoris: [],
+  stories: [],
 };
 
 function ConvertToSlug(title) {
@@ -13,12 +14,12 @@ function ConvertToSlug(title) {
   return slug;
 }
 
-const catagoryID = [];
-export function createRandomCatagory() {
+const categoryID = [];
+export function createRandomCategory() {
   const name = faker.word.words({ min: 1, max: 5 });
   const id = faker.database.mongodbObjectId();
-  catagoryID.push(id);
-  const parentID = catagoryID[faker.number.int(catagoryID.length - 1)];
+  categoryID.push(id);
+  const parentID = categoryID[faker.number.int(categoryID.length - 1)];
 
   return {
     id: id,
@@ -34,19 +35,14 @@ export function createRandomCatagory() {
 }
 
 Array.from({ length: 8 }).forEach(() => {
-  Catagories.catagory.push(createRandomCatagory());
+  data.categoris.push(createRandomCategory());
 });
 
-console.log(JSON.stringify(Catagories));
-
-export const Stories = {
-  story: [],
-};
 export function createRandomStory() {
   return {
     id: faker.database.mongodbObjectId(),
     date: faker.date.recent(),
-    catagaory_id: Catagories.catagory[faker.number.int(2)].id,
+    catagaory_id: data.categoris[faker.number.int(2)].id,
     source: faker.lorem.word(),
     views: faker.number.int(500),
     shares: faker.number.int(500),
@@ -59,7 +55,7 @@ export function createRandomStory() {
 }
 
 Array.from({ length: 50 }).forEach(() => {
-  Stories.story.push(createRandomStory());
+  data.stories.push(createRandomStory());
 });
 
-console.log(JSON.stringify(Stories));
+console.log(JSON.stringify(data));
