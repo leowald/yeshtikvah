@@ -15,12 +15,12 @@ export default {
 
   
   export const CardComponentGradientBackground = {
-    args: { backgroundColor: background, text: "Testing card component with gradient as background color." },
+    args: { backgroundColor: background },
     tags: ["autodocs"],
   };
 
   export const CardComponentSolidBackground = {
-    args: { backgroundColor: "green", text: "Testing card component with solid color as background color." },
+    args: { backgroundColor: "green" },
     argTypes: {
       backgroundColor: {
         control: { type: "color" },
