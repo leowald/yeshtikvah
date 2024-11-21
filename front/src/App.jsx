@@ -1,4 +1,5 @@
 import Provider from "./providers/Provider";
+import axiosClient from "./api/axiosClient.js";
 
 import Slider from "react-slick";
 
@@ -19,6 +20,12 @@ function App() {
   };
 
   const images = import.meta.env.VITE_IMAGE_PATH;
+
+  async function get() {
+    const res = await axiosClient.get("/posts");
+    console.log(res.data);
+  }
+  get();
 
   return (
     <Provider>
