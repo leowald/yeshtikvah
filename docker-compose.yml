@@ -53,6 +53,8 @@ services:
     volumes:
       - ./wp/wp-content:/var/www/html/wp-content
   json-server:
+    depends_on:
+      - faker
     image: clue/json-server
     command: --watch /data/db.json --host 0.0.0.0
     ports:
@@ -83,6 +85,12 @@ services:
     environment:
       - CHOKIDAR_USEPOLLING=true
       - CHOKIDAR_INTERVAL=1000
+  faker:
+    build: ./front
+    command: npm run filldata
+    container_name: faker-fill-data
+    volumes:
+      - ./front/src:/app/front/src
 
 volumes:
   my-db-volume:

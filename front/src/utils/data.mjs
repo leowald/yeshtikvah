@@ -1,4 +1,4 @@
-//creates fake information using 'faker' to produce catagories and stories and add them to the json file
+//creates fake information using 'faker' to produce catagories and stories and add them to the db.json file
 
 import { faker } from "@faker-js/faker";
 
