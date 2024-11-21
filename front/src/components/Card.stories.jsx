@@ -1,7 +1,7 @@
 import Card from "./Card.jsx";
 
 const background = {
-  colors: [{ color: "blue" }, { color: "red" }],
+  colors: [{ color: "green" }, { color: "red", deg: "20%" }],
   sideCorner: "90deg in oklab",
 };
 

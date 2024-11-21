@@ -1,15 +1,16 @@
-import "./Card.scss";
+import styles from "./Card.module.scss";
 import "../utils/styles.jsx";
 import { getBackground } from "../utils/styles.jsx";
 import PropTypes from "prop-types";
+import { useState } from "react";
 
 /** This component creates a card around specific text with specific css including rounded edges etc. It also takes in a background color/gradient which then sets the background of the component accordingly. */
 
-export default function Card({ backgroundColor, children, text }) {
+export default function Card({ backgroundColor, children }) {
   return (
     <div
       role="card"
-      className="card"
+      className={styles.card}
       style={{ background: getBackground(backgroundColor) }}
     >
       {children}
