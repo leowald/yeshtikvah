@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-// need to import bootstrap css here so that it can be used by storybook documentation
+import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 /**
@@ -9,21 +9,27 @@ import "bootstrap/dist/css/bootstrap.min.css";
  */
 
 export default function Alert({ type, children, flex = false }) {
+  const [show, setShow] = useState(true);
+
   return (
-    <div
-      className={`alert alert-${type} alert-dismissible fade show bd-highlight ${
-        flex && "d-flex"
-      }`}
-      role="alert"
-    >
-      {children}
-      <button
-        type="button"
-        className="btn-close"
-        data-bs-dismiss="alert"
-        aria-label="Close"
-      ></button>
-    </div>
+    <>
+      {show && (
+        <div
+          className={`alert alert-${type} alert-dismissible fade show bd-highlight ${
+            flex && "d-flex"
+          }`}
+          role="alert"
+        >
+          {children}
+          <button
+            onClick={() => setShow(false)}
+            type="button"
+            className="btn-close"
+            aria-label="Close"
+          ></button>
+        </div>
+      )}
+    </>
   );
 }
 
