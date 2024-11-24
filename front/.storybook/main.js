@@ -11,7 +11,9 @@ const config = {
       name: "storybook-addon-jsdoc-to-mdx",
       options: {
         folderPaths: ["./src/hooks", "./src/utils"], // paths to folders with JS/TS code
-        extensions: ["ts", "js", "jsx"], // file extensions to include
+
+        extensions: ["ts", "js", "jsx", "mjs"], // file extensions to include
+
       },
     },
   ],
