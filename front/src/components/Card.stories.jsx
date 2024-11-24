@@ -15,7 +15,7 @@ export const CardComponentGradientBackground = {
 };
 
 export const CardComponentSolidBackground = {
-  args: { backgroundColor: "green" },
+  args: { backgroundColor: "orange" },
   argTypes: {
     backgroundColor: {
       control: { type: "color" },

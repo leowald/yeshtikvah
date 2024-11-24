@@ -17,4 +17,6 @@
   @include round-box-shadow(rgba(0, 4, 88, 0.1), 0.625rem, 0rem);
 
   @include rounded-border(15px);
+
+  padding: 15px;
 }
