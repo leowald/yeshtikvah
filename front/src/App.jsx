@@ -1,11 +1,15 @@
 import Provider from "./providers/Provider";
 import axiosClient from "./api/axiosClient.js";
+import { useState } from "react";
 
 import Slider from "react-slick";
 
 import "./App.scss";
 
 function App() {
+  const [data, updateData] = useState({});
+  const [error, updateError] = useState("");
+
   const settings = {
     dots: false,
     fade: true,
@@ -22,15 +26,24 @@ function App() {
   const images = import.meta.env.VITE_IMAGE_PATH;
 
   async function get() {
-    const res = await axiosClient.get("/posts");
-    console.log(res.data);
+    try {
+      const res = await axiosClient.get("/postss");
+      updateData(res.data[0]);
+    } catch (error) {
+      updateError(error.message);
+    }
   }
-  get();
+  function CallGet() {
+    get();
+    console.log(data);
+    console.log(error);
+  }
 
   return (
     <Provider>
       <div class="page-wrapper">
         <header id="header">
+          <button onClick={() => CallGet()}>get</button>
           <div class="wpo-site-header wpo-site-header-s1 wpo-site-header-s2">
             <nav class="navigation navbar navbar-expand-lg navbar-light">
               <div class="container-fluid">
