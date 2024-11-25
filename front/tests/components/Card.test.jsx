@@ -1,9 +1,9 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import userEvent from "@testing-library/user-event";
-import Card from "../src/components/Card";
-import "../src/utils/styles.jsx";
-import { getBackground } from "../src/utils/styles";
+import Card from "../../src/components/Card.jsx";
+import "../../src/utils/styles.jsx";
+import { getBackground } from "../../src/utils/styles.jsx";
 
 const backgroundexample = {
   colors: [
@@ -38,5 +38,16 @@ describe("group of tests which test the card component", () => {
     renderComponent(backgroundexample);
     let card = screen.getByRole("card");
     expect(card).toHaveStyle(`background: ${getBackground(backgroundexample)}`);
+  });
+
+  it("should render a card component with a green background and when hovered over, it should darken and vv.", async () => {
+    renderComponent("green");
+    let card = screen.getByRole("card");
+    expect(card).toHaveStyle("background: green");
+    const user = userEvent.setup();
+    await user.hover(card);
+    expect(card).toHaveClass(/hover/);
+    await user.unhover(card);
+    expect(card).not.toHaveClass(/hover/);
   });
 });
