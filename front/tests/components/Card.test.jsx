@@ -48,6 +48,6 @@ describe("group of tests which test the card component", () => {
     await user.hover(card);
     expect(card).toHaveClass(/hover/);
     await user.unhover(card);
-    expect(card).toHaveClass(/card/);
+    expect(card).not.toHaveClass(/hover/);
   });
 });
