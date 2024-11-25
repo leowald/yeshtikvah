@@ -1,9 +1,9 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import userEvent from "@testing-library/user-event";
-import Card from "../src/components/Card";
-import "../src/utils/styles.jsx";
-import { getBackground } from "../src/utils/styles";
+import Card from "../../src/components/Card.jsx";
+import "../../src/utils/styles.jsx";
+import { getBackground } from "../../src/utils/styles.jsx";
 
 const backgroundexample = {
   colors: [

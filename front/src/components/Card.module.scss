@@ -1,6 +1,7 @@
 @import "../sass/helpers/mixins";
 
-.card {
+.card,
+.cardhover {
   @include media-query(1399px) {
     padding: 10px;
   }
@@ -22,24 +23,5 @@
 }
 
 .cardhover {
-  @include media-query(1399px) {
-    padding: 10px;
-  }
-
-  @include media-query(991px) {
-    margin-bottom: 20px;
-  }
-
-  @include media-query(767px) {
-    display: flex;
-    align-items: center;
-  }
-
-  @include round-box-shadow(rgba(0, 4, 88, 0.1));
-
-  @include rounded-border(15px);
-
-  padding: 15px;
-
   filter: grayscale(0.4);
 }
