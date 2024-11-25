@@ -39,4 +39,15 @@ describe("group of tests which test the card component", () => {
     let card = screen.getByRole("card");
     expect(card).toHaveStyle(`background: ${getBackground(backgroundexample)}`);
   });
+
+  it("should render a card component with a green background and when hovered over, it should darken and vv.", async () => {
+    renderComponent("green");
+    let card = screen.getByRole("card");
+    expect(card).toHaveStyle("background: green");
+    const user = userEvent.setup();
+    await user.hover(card);
+    expect(card).toHaveClass(/hover/);
+    await user.unhover(card);
+    expect(card).toHaveClass(/card/);
+  });
 });
