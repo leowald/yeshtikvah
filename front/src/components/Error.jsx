@@ -3,12 +3,8 @@ import PropTypes from "prop-types";
 import Alert from "./Alert";
 
 /**
- * @method
- * @param {string} type
- * @param {string, element} children
- * @param {boolean} flex
  *
- * @returns bootstrap Alert box
+ * This component return an Error Alert box, bootstrap styled.
  */
 export default function Error({ children }) {
   return (

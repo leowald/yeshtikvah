@@ -10,7 +10,7 @@ export default {
     layout: "fullscreen",
   },
   args: {
-    children: "This text is displayed in the Error box",
+    children: "This error message is displayed in the Error box",
   },
 };
 
