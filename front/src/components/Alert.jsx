@@ -1,11 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { useState } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
+//import "bootstrap/dist/css/bootstrap.min.css";
 
 /**
- * This component displays a Bootstrap Alert box.
- * The style is set by the type prop.
+ * This component displays an Alert box using Bootstrap styling.
+ * The style is set by the {type} prop.
  */
 
 export default function Alert({ type, children, flex = false }) {
