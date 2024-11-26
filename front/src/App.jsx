@@ -1,14 +1,11 @@
 import Provider from "./providers/Provider";
-import axiosClient from "./api/axiosClient.js";
-import { useState, createContext, useContext } from "react";
+import { useState } from "react";
 
 import Slider from "react-slick";
 
 import "./App.scss";
 
 function App() {
-  const UserContext = createContext();
-
   const [catagories, updateCatagories] = useState({});
   const [error, updateError] = useState("");
 
@@ -26,32 +23,6 @@ function App() {
   };
 
   const images = import.meta.env.VITE_IMAGE_PATH;
-  async function manageErrors(response) {
-    if (!response.ok) {
-      const result = await response.json();
-      throw new Error(result.message);
-    }
-    return response;
-  }
-
-  async function get(url) {
-    const response = await axiosClient.get(url);
-
-    await manageErrors(response);
-    const data = await response.json();
-    return data;
-  }
-
-  async function LoadCategories() {
-    try {
-      updateCatagories(get("/categories"));
-    } catch (error) {
-      updateError(error.message);
-    }
-  }
-
-  console.log(catagories);
-  console.log(error);
 
   return (
     <Provider>
