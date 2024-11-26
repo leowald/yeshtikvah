@@ -1,0 +1,73 @@
+### Making api calls using axios
+
+In our project, the axios baseUrl has been set to point to the JSON server.  
+That means that we do not need to specify it for each call.
+
+Add a statement importing api/axiosClient.js into your js file.
+
+You can now use axiosClient to make api requests. The url will only need to contain
+a subdirectory eg: "/post", etc, and not the full path.
+
+We will be using async/await.
+Note that when using await, the calling function must be an async function.
+
+##### GET:
+
+```
+    const res = await axiosClient.get("/posts");
+    console.log(res.data);
+```
+
+##### POST:
+
+dataToPost parameter is a json object.
+
+```
+    const response = await axiosClient.post("/comments", dataToPost);
+    console.log(response.data);
+```
+
+##### PUT:
+
+pass both the id of the entry to change  
+and the changed data as a json object
+
+```
+    const response = await axiosClient.put(`${url}/${id}`, dataToUpdate);
+    console.log(response.data);
+```
+
+##### DELETE:
+
+pass the id of the entry to delete
+
+```
+	const response = await axiosClient.delete(`${url}/${idToDelete}`);
+	console.log(response.data);
+```
+
+##### Error handing
+
+The api calls should be made within try/catch blocks to catch errors:
+
+```
+  const getData = async (url) => {
+	try {
+		const res = await axiosClient.get(url);
+		console.log(res.data);
+	} catch (error) {
+		if (error.response) {
+			// Request made but the server responded with an error
+			console.log(error.response.data);
+			console.log(error.response.status);
+			console.log(error.response.headers);
+		} else if (error.request) {
+			// Request made but no response is received from the server.
+			console.log(error.request);
+		} else {
+			// Error occured while setting up the request
+			console.log('Error', error.message);
+		}
+	}
+};
+```
