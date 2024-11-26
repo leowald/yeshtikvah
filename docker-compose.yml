@@ -60,7 +60,6 @@ services:
     ports:
       - "3000:80"
     volumes:
-      - ./front/src:/app/front/src
       - ./data:/data
   test:
     container_name: react-app-test
@@ -92,6 +91,7 @@ services:
     container_name: faker-fill-data
     volumes:
       - ./front/src:/app/front/src
+      - ./data:/app/data
 
 volumes:
   my-db-volume:
