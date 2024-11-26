@@ -1,13 +1,15 @@
 import Provider from "./providers/Provider";
 import axiosClient from "./api/axiosClient.js";
-import { useState } from "react";
+import { useState, createContext, useContext } from "react";
 
 import Slider from "react-slick";
 
 import "./App.scss";
 
 function App() {
-  const [data, updateData] = useState({});
+  const UserContext = createContext();
+
+  const [catagories, updateCatagories] = useState({});
   const [error, updateError] = useState("");
 
   const settings = {
@@ -24,26 +26,37 @@ function App() {
   };
 
   const images = import.meta.env.VITE_IMAGE_PATH;
+  async function manageErrors(response) {
+    if (!response.ok) {
+      const result = await response.json();
+      throw new Error(result.message);
+    }
+    return response;
+  }
 
-  async function get() {
+  async function get(url) {
+    const response = await axiosClient.get(url);
+
+    await manageErrors(response);
+    const data = await response.json();
+    return data;
+  }
+
+  async function LoadCategories() {
     try {
-      const res = await axiosClient.get("/postss");
-      updateData(res.data[0]);
+      updateCatagories(get("/categories"));
     } catch (error) {
       updateError(error.message);
     }
   }
-  function CallGet() {
-    get();
-    console.log(data);
-    console.log(error);
-  }
+
+  console.log(catagories);
+  console.log(error);
 
   return (
     <Provider>
       <div class="page-wrapper">
         <header id="header">
-          <button onClick={() => CallGet()}>get</button>
           <div class="wpo-site-header wpo-site-header-s1 wpo-site-header-s2">
             <nav class="navigation navbar navbar-expand-lg navbar-light">
               <div class="container-fluid">

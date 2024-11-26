@@ -3,7 +3,7 @@
 import { faker } from "@faker-js/faker";
 
 export const data = {
-  categoris: [],
+  categories: [],
   stories: [],
 };
 
@@ -35,14 +35,14 @@ export function createRandomCategory() {
 }
 
 Array.from({ length: 8 }).forEach(() => {
-  data.categoris.push(createRandomCategory());
+  data.categories.push(createRandomCategory());
 });
 
 export function createRandomStory() {
   return {
     id: faker.database.mongodbObjectId(),
     date: faker.date.recent(),
-    catagaory_id: data.categoris[faker.number.int(2)].id,
+    catagaory_id: data.categories[faker.number.int(2)].id,
     source: faker.lorem.word(),
     views: faker.number.int(500),
     shares: faker.number.int(500),
