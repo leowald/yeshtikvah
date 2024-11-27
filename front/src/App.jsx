@@ -9,7 +9,7 @@ import "./App.scss";
 function App() {
   //const UserContext = createContext();
 
-  const [catagories, updateCatagories] = useState({});
+  const [categories, updateCategories] = useState([]);
   const [error, updateError] = useState("");
 
   const settings = {
@@ -27,30 +27,22 @@ function App() {
 
   const images = import.meta.env.VITE_IMAGE_PATH;
 
-  async function manageErrors(response) {
-    if (!response.ok) {
-      const result = await response.json();
-      throw new Error(result.message);
-    }
-    return response;
-  }
-
   useEffect(() => {
-    async function LoadCatagories() {
-      const res = await axiosClient.get("/categorie");
-      await manageErrors(res);
+    const LoadCatagories = async () => {
+      try {
+        const res = await axiosClient.get("/categoies");
+        updateCategories(res.data);
+      } catch (error) {
+        updateError(error.message);
+      }
+    };
 
-      updateCatagories(res.data);
-    }
-
-    try {
-      LoadCatagories();
-    } catch (error) {
-      updateError(error.message);
-    }
+    LoadCatagories();
   }, []);
-  console.log(catagories);
-  console.log(error);
+  useEffect(() => {
+    console.log("c:", categories);
+    console.log("e:", error);
+  }, [categories, error]);
 
   return (
     <Provider>
