@@ -16,7 +16,7 @@ function ConvertToSlug(title) {
 
 const categoryID = [];
 export function createRandomCategory() {
-  const name = faker.word.words({ min: 1, max: 5 });
+  const name = faker.word.adjective({ length: { min: 3, max: 8 } });
   const id = faker.database.mongodbObjectId();
   categoryID.push(id);
   const parentID = categoryID[faker.number.int(categoryID.length - 1)];
@@ -41,7 +41,7 @@ Array.from({ length: 8 }).forEach(() => {
 export function createRandomStory() {
   return {
     id: faker.database.mongodbObjectId(),
-    date: faker.date.recent(),
+    date: faker.date.recent().toLocaleDateString(),
     catagaory_id: data.categories[faker.number.int(2)].id,
     source: faker.lorem.word(),
     views: faker.number.int(500),
