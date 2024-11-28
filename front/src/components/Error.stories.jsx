@@ -11,7 +11,6 @@ export default {
   },
   args: {
     errText: "This error message is displayed in the Error box",
-    image: "your image goes here",
   },
 };
 
