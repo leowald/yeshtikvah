@@ -10,7 +10,8 @@ export default {
     layout: "fullscreen",
   },
   args: {
-    children: "This error message is displayed in the Error box",
+    errText: "This error message is displayed in the Error box",
+    image: "your image goes here",
   },
 };
 

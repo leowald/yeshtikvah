@@ -1,16 +1,23 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Alert from "./Alert";
+import errorStyles from "./Error.module.scss";
 
 /**
  *
  * This component return an Error Alert box, bootstrap styled.
  */
-export default function Error({ children }) {
+export default function Error({ errText, image }) {
   return (
     <div>
       <Alert type="danger" flex={true}>
-        {children}
+        <div className={errorStyles.errImage}>
+          <img src={image} />
+        </div>
+        <div className={errorStyles.errText}>
+          <span> Error! </span>
+          <span>{errText}</span>
+        </div>
       </Alert>
     </div>
   );
@@ -18,5 +25,6 @@ export default function Error({ children }) {
 
 Error.propTypes = {
   /** The content to appear in the Error box */
-  children: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+  errText: PropTypes.string,
+  image: PropTypes.string,
 };
