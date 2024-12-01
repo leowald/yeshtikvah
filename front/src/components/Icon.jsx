@@ -1,3 +1,4 @@
+import styles from "./Icon.module.scss";
 import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -10,7 +11,7 @@ library.add(fas, far, fab);
 export default function Icon({ topIcon, size, bottomIcon, ...extras }) {
   return (
     <>
-      <div className={bottomIcon ? "fa-layers" : ""}>
+      <div className={bottomIcon ? `${styles.icon}` : ""}>
         {bottomIcon && (
           <FontAwesomeIcon
             data-testid="bottomIcon"
@@ -21,6 +22,7 @@ export default function Icon({ topIcon, size, bottomIcon, ...extras }) {
             }`}
             size={size}
             fixedWidth
+            className={styles.iconchild}
           />
         )}
         <FontAwesomeIcon
@@ -32,6 +34,7 @@ export default function Icon({ topIcon, size, bottomIcon, ...extras }) {
           {...extras}
           fixedWidth
           transform="shrink-6"
+          className={styles.iconchild}
         />
       </div>
     </>
