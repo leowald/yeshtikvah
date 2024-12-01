@@ -1,8 +1,6 @@
-import React from "react";
 import PropTypes from "prop-types";
 import Alert from "./Alert";
 import errorStyles from "./Error.module.scss";
-import Image from "/src/assets/images/about/1.png"; // temp
 import Icon from "./Icon";
 
 /**
@@ -14,7 +12,6 @@ export default function Error({ errText }) {
     color: "white",
     name: "fa-triangle-exclamation",
     type: "fas",
-    style: { display: "inline-block" },
   };
 
   const bottomIcon = {
@@ -24,8 +21,8 @@ export default function Error({ errText }) {
   return (
     <div>
       <Alert type="danger" flex={true}>
-        <div className={errorStyles.errImage}>
-          <Icon topIcon={topIcon} bottomIcon={bottomIcon} size="4x"></Icon>
+        <div>
+          <Icon topIcon={topIcon} bottomIcon={bottomIcon} size="5x"></Icon>
         </div>
         <div className={errorStyles.errText}>
           <span> Error! </span>

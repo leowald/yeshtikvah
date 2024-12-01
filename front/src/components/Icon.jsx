@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 import styles from "./Icon.module.scss";
-=======
->>>>>>> f77b3eb4ed726c214fa858baf6e8e3297945f6e4
 import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -14,11 +11,7 @@ library.add(fas, far, fab);
 export default function Icon({ topIcon, size, bottomIcon, ...extras }) {
   return (
     <>
-<<<<<<< HEAD
       <div className={bottomIcon ? `${styles.icon}` : ""}>
-=======
-      <div className={bottomIcon ? "fa-layers" : ""}>
->>>>>>> f77b3eb4ed726c214fa858baf6e8e3297945f6e4
         {bottomIcon && (
           <FontAwesomeIcon
             data-testid="bottomIcon"
@@ -29,10 +22,7 @@ export default function Icon({ topIcon, size, bottomIcon, ...extras }) {
             }`}
             size={size}
             fixedWidth
-<<<<<<< HEAD
-            className={styles.iconchild}
-=======
->>>>>>> f77b3eb4ed726c214fa858baf6e8e3297945f6e4
+            className={styles.iconChild}
           />
         )}
         <FontAwesomeIcon
@@ -44,10 +34,7 @@ export default function Icon({ topIcon, size, bottomIcon, ...extras }) {
           {...extras}
           fixedWidth
           transform="shrink-6"
-<<<<<<< HEAD
-          className={styles.iconchild}
-=======
->>>>>>> f77b3eb4ed726c214fa858baf6e8e3297945f6e4
+          className={styles.iconChild}
         />
       </div>
     </>
