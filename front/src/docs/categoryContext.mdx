@@ -1,0 +1,24 @@
+## passing props with useContext
+
+In order to avoid prop drilling (- passing props into many components in order to get it in the bottom conteiner), we use "useConext".
+currently was used to pass down categories from app to any component, using categoryContext.jsx.
+
+In order to use the categoies or error (if categories didn't get fetched correctly) in any component, follow these steps:
+
+```
+import { useContext } from "react"; //import useConext
+import categoryContext from "./store/categoryContext"; //import categoryConext
+
+export default function test() {
+  const { categories, error } = useContext(categoryContext);//destructure the object received through categoryContext
+  return (
+    <div>
+      {categories &&
+        categories.map(function (category) {
+          return <p> object id: {category.name}</p>; //map through categories and pull out whatever information needed
+        })}
+      {error && <p> error {error}</p>} //check for error message in case categories did not get fetched correctly
+    </div>
+  );
+}
+```
