@@ -4,7 +4,6 @@ const topIcon = {
   color: "green",
   name: "fa-house",
   type: "fas",
-  style: { border: "1px solid #FF7888", borderRadius: "50%" },
 };
 
 const bottomIcon = {
