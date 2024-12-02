@@ -1,9 +1,5 @@
 import Provider from "./providers/Provider";
-import Test from "./test";
-import CategoryProvider from "./providers/CategoryProvider";
-
 import Slider from "react-slick";
-
 import "./App.scss";
 
 function App() {
