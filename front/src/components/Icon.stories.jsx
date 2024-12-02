@@ -8,7 +8,6 @@ const topIcon = {
 
 const bottomIcon = {
   color: "pink",
-  style: { border: "1px solid #FF7888", borderRadius: "50%" },
 };
 
 export default {
