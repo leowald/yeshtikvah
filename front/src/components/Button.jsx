@@ -13,7 +13,7 @@ export default function Button({
 }) {
   const buttonStyle = {
     borderRadius: "20px",
-    backgroundColor: !outline ? getBackground(backgroundColor) : "white",
+    background: !outline ? getBackground(backgroundColor) : "white",
     border: outline ? `1px solid ${getBackground(backgroundColor)}` : "none",
     color: outline ? getBackground(backgroundColor) : "white",
   };

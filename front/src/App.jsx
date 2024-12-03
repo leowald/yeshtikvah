@@ -36,7 +36,13 @@ function App() {
           <Button
             text="green button"
             onClick={click}
-            backgroundColor="green"
+            backgroundColor={{
+              sideCorner: "180deg",
+              colors: [
+                { color: "#00a7d5", deg: "40%" },
+                { color: "#00ded8", deg: "120%" },
+              ],
+            }}
           ></Button>
           <Button
             text="red button"
