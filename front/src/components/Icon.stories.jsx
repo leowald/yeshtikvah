@@ -15,11 +15,23 @@ export default {
 };
 
 export const FALayeredIconComponent = {
-  args: { topIcon: topIcon, bottomIcon: bottomIcon, size: "3x" },
+  args: { topIcon: topIcon, bottomIcon: bottomIcon, size: "3" },
+  argTypes: {
+    size: {
+      options: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+      control: { type: "select" },
+    },
+  },
   tags: ["autodocs"],
 };
 
 export const FAIconComponent = {
-  args: { topIcon: topIcon, size: "3x" },
+  args: { topIcon: topIcon, size: "3" },
+  argTypes: {
+    size: {
+      options: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+      control: { type: "select" },
+    },
+  },
   tags: ["autodocs"],
 };

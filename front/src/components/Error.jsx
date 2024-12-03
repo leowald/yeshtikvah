@@ -9,20 +9,16 @@ import Icon from "./Icon";
  */
 export default function Error({ errText }) {
   const topIcon = {
-    color: "white",
+    color: "#58151c",
     name: "fa-triangle-exclamation",
     type: "fas",
-  };
-
-  const bottomIcon = {
-    color: "red",
   };
 
   return (
     <div>
       <Alert type="danger" flex={true}>
         <div>
-          <Icon topIcon={topIcon} bottomIcon={bottomIcon} size="5x"></Icon>
+          <Icon topIcon={topIcon} size="3"></Icon>
         </div>
         <div className={errorStyles.errText}>
           <span> Error! </span>
