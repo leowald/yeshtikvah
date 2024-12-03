@@ -1,8 +1,7 @@
 import Provider from "./providers/Provider";
-
 import Slider from "react-slick";
-
 import "./App.scss";
+import Button from "./components/Button";
 
 function App() {
   const settings = {
@@ -19,11 +18,32 @@ function App() {
   };
 
   const images = import.meta.env.VITE_IMAGE_PATH;
+  function click() {
+    console.log("clicked");
+  }
 
   return (
     <Provider>
       <div class="page-wrapper">
         <header id="header">
+          <Button
+            text="blue button"
+            onClick={click}
+            backgroundColor="blue"
+            size="sm"
+            outline={true}
+          ></Button>
+          <Button
+            text="green button"
+            onClick={click}
+            backgroundColor="green"
+          ></Button>
+          <Button
+            text="red button"
+            onClick={click}
+            backgroundColor="red"
+            size="lg"
+          ></Button>
           <div class="wpo-site-header wpo-site-header-s1 wpo-site-header-s2">
             <nav class="navigation navbar navbar-expand-lg navbar-light">
               <div class="container-fluid">
