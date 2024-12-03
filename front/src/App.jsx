@@ -1,4 +1,5 @@
 import Provider from "./providers/Provider";
+
 import Slider from "react-slick";
 import "./App.scss";
 
@@ -22,7 +23,6 @@ function App() {
     <Provider>
       <div class="page-wrapper">
         <header id="header">
-          <Test></Test>
           <div class="wpo-site-header wpo-site-header-s1 wpo-site-header-s2">
             <nav class="navigation navbar navbar-expand-lg navbar-light">
               <div class="container-fluid">
