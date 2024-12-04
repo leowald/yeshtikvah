@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import axiosClient from "../api/axiosClient.js";
-import categoryContext from "../store/categoryContext.jsx";
+import axiosClient from "../api/axiosClient";
+import categoryContext from "../store/categoryContext";
 
 export default function CategoryProvider({ children }) {
   const [categories, updateCategories] = useState([]);
