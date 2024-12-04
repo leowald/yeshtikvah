@@ -1,7 +1,6 @@
 import Error from "./Error";
 
 export default {
-  title: "Error Component",
   component: Error,
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
   tags: ["autodocs"],
