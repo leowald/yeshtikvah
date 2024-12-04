@@ -2,6 +2,8 @@ import Provider from "./providers/Provider";
 import Slider from "react-slick";
 import "./App.scss";
 import Button from "./components/Button";
+import Alert from "./components/Alert";
+import Card from "./components/Card";
 
 function App() {
   const settings = {
@@ -26,15 +28,17 @@ function App() {
     <Provider>
       <div class="page-wrapper">
         <header id="header">
+          <Card></Card>
           <Button
-            text="blue button"
+            btnText="blue button"
             onClick={click}
             backgroundColor="blue"
             size="sm"
             outline={true}
+            type="warning"
           ></Button>
           <Button
-            text="green button"
+            btnText="green button"
             onClick={click}
             backgroundColor={{
               sideCorner: "180deg",
@@ -45,7 +49,14 @@ function App() {
             }}
           ></Button>
           <Button
-            text="red button"
+            btnText="red button"
+            onClick={click}
+            backgroundColor="red"
+            size="sm"
+            type="info"
+          ></Button>
+          <Button
+            btnText="red button"
             onClick={click}
             backgroundColor="red"
             size="lg"

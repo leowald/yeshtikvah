@@ -4,12 +4,12 @@ import PropTypes from "prop-types";
 import { getBackground } from "../utils/styles.jsx";
 
 export default function Button({
-  text,
+  type,
+  btnText,
   onClick,
   backgroundColor,
   size,
   outline = false,
-  theme,
 }) {
   const buttonStyle = {
     borderRadius: "20px",
@@ -17,23 +17,27 @@ export default function Button({
     border: outline ? `1px solid ${getBackground(backgroundColor)}` : "none",
     color: outline ? getBackground(backgroundColor) : "white",
   };
+  let className = "";
+  className +=
+    (size === "sm" && style.sm) || (size === "lg" && style.lg) || style.md;
+
+  className += type ? ` btn btn${outline ? "-outline-" : "-"}${type}` : "";
 
   return (
     <button
-      style={buttonStyle}
+      style={!type ? buttonStyle : { borderRadius: "20px" }}
       onClick={() => onClick}
-      className={
-        (size === "sm" && style.sm) || (size === "lg" && style.lg) || style.md
-      }
+      type="button"
+      className={className}
     >
-      {text}
+      {btnText}
     </button>
   );
 }
 
-/**Button.propTypes = {
+Button.propTypes = {
   /** The bootstrap Button style that you want.  */
-/**  theme: PropTypes.oneOf(["success", "danger", "warning", "info"]),*/
-/** The content to appear in the Button */
-/**  text: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
-};*/
+  type: PropTypes.oneOf(["success", "danger", "warning", "info"]),
+  /** The content to appear in the Button */
+  btnText: PropTypes.string,
+};
