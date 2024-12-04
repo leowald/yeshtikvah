@@ -1,6 +1,3 @@
 export default function Sources() {
-    return (
-      <div>
-      </div>
-    );
-  }
+  return <h1>Sources Page</h1>;
+}

@@ -1,6 +1,3 @@
 export default function Subscribe() {
-    return (
-      <div>
-      </div>
-    );
-  }
+  return <h1>subscribe Page</h1>;
+}

@@ -1,6 +1,3 @@
 export default function Shiurim() {
-    return (
-      <div>
-      </div>
-    );
-  }
+  return <h1>Shiurim Page</h1>;
+}

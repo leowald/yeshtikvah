@@ -1,6 +1,3 @@
 export default function Pesukim() {
-    return (
-      <div>
-      </div>
-    );
-  }
+  return <h1>Pesukim Page</h1>;
+}
