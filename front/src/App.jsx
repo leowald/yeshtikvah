@@ -2,8 +2,8 @@ import Provider from "./providers/Provider";
 import Slider from "react-slick";
 import "./App.scss";
 import Button from "./components/Button";
-import Alert from "./components/Alert";
 import Card from "./components/Card";
+import Icon from "./components/Icon";
 
 function App() {
   const settings = {
@@ -27,9 +27,21 @@ function App() {
   return (
     <Provider>
       <div class="page-wrapper">
+        <Icon
+          bottomIcon={{ color: "red" }}
+          topIcon={{ color: "white", name: "fa-house", type: "fas" }}
+          size="7"
+          opacity="80%"
+        ></Icon>
         <header id="header">
           <Card></Card>
           <Button
+            icon={{
+              bottomIcon: { color: "red" },
+              topIcon: { color: "white", name: "fa-house", type: "fas" },
+              size: "2",
+              opacity: "90%",
+            }}
             btnText="blue button"
             onClick={click}
             backgroundColor="blue"

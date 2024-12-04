@@ -1,6 +1,7 @@
 import React from "react";
 import style from "./Button.module.scss";
 import PropTypes from "prop-types";
+import Icon from "./Icon.jsx";
 import { getBackground } from "../utils/styles.jsx";
 
 export default function Button({
@@ -9,6 +10,8 @@ export default function Button({
   onClick,
   backgroundColor,
   size,
+  icon,
+  iconPosition = true,
   outline = false,
 }) {
   const buttonStyle = {
@@ -21,7 +24,9 @@ export default function Button({
   className +=
     (size === "sm" && style.sm) || (size === "lg" && style.lg) || style.md;
 
-  className += type ? ` btn btn${outline ? "-outline-" : "-"}${type}` : "";
+  className += type
+    ? ` d-flex btn btn${outline ? "-outline-" : "-"}${type}`
+    : "";
 
   return (
     <button
@@ -30,6 +35,7 @@ export default function Button({
       type="button"
       className={className}
     >
+      {icon && <Icon {...icon}></Icon>}&nbsp;
       {btnText}
     </button>
   );
