@@ -1,6 +1,6 @@
 import Button from "./Button";
 
-const backgroundColor = {
+const backgroundGradient = {
   colors: [{ color: "green" }, { color: "red", deg: "20%" }],
   sideCorner: "90deg in oklab",
 };
@@ -10,16 +10,26 @@ export default {
 };
 
 export const ButtonComponentGradientBackground = {
-  args: { backgroundColor: background },
+  args: { backgroundColor: backgroundGradient },
   tags: ["autodocs"],
 };
 
 export const ButtonComponentSolidBackground = {
-  args: { backgroundColor: "blue" },
+  args: {
+    backgroundColor: "blue",
+    size: "sm",
+    btnText: "button text",
+    outline: false,
+  },
   argTypes: {
     backgroundColor: {
       control: { type: "color" },
     },
+    size: {
+      options: ["sm", "md", "lg"],
+      control: { type: "select" },
+    },
+
+    tags: ["autodocs"],
   },
-  tags: ["autodocs"],
 };

@@ -20,8 +20,9 @@ function App() {
   };
 
   const images = import.meta.env.VITE_IMAGE_PATH;
+
   function click() {
-    console.log("clicked");
+    console.log("clicked!");
   }
 
   return (
@@ -41,18 +42,16 @@ function App() {
               size: "5",
               opacity: "90%",
             }}
-            fontSize="5rem"
             iconPosition={false}
             btnText=" small warning button"
-            onClick={click}
+            onClickFunction={click}
             backgroundColor="blue"
             size="sm"
-            outline={true}
-            type="warning"
+            color="pink"
           ></Button>
           <Button
             btnText="green button"
-            onClick={click}
+            onClick={() => click}
             backgroundColor={{
               sideCorner: "180deg",
               colors: [
@@ -65,10 +64,11 @@ function App() {
           ></Button>
           <Button
             btnText="large info button"
-            onClick={click}
+            onClickFunction={click}
             backgroundColor="red"
-            size="lg"
-            type="info"
+            size="sm"
+            type="danger"
+            fontFamily="'Courier New', Courier, monospace"
           ></Button>
           <Button
             btnText="red button"

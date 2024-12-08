@@ -7,7 +7,7 @@ import { getBackground } from "../utils/styles.jsx";
 export default function Button({
   type,
   btnText,
-  onClick,
+  onClickFunction,
   backgroundColor,
   size,
   icon,
@@ -22,9 +22,11 @@ export default function Button({
     color: outline ? getBackground(backgroundColor) : "white",
     ...extras,
   };
+
   let className = "";
-  className +=
-    (size === "sm" && style.sm) || (size === "lg" && style.lg) || style.md;
+  className += extras.fontSize
+    ? ""
+    : (size === "sm" && style.sm) || (size === "lg" && style.lg) || style.md;
 
   className += type
     ? ` d-flex btn btn${outline ? "-outline-" : "-"}${type}`
@@ -32,8 +34,8 @@ export default function Button({
 
   return (
     <button
-      style={!type ? buttonStyle : { borderRadius: "20px" }}
-      onClick={() => onClick}
+      style={!type ? buttonStyle : { borderRadius: "20px", ...extras }}
+      onClick={onClickFunction && (() => onClickFunction())}
       type="button"
       className={className}
     >
