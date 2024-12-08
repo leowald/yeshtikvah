@@ -37,12 +37,13 @@ function App() {
           <Card></Card>
           <Button
             icon={{
-              bottomIcon: { color: "red" },
-              topIcon: { color: "white", name: "fa-house", type: "fas" },
-              size: "2",
+              topIcon: { color: "pink", name: "fa-heart", type: "fas" },
+              size: "5",
               opacity: "90%",
             }}
-            btnText="blue button"
+            fontSize="5rem"
+            iconPosition={false}
+            btnText=" small warning button"
             onClick={click}
             backgroundColor="blue"
             size="sm"
@@ -59,12 +60,14 @@ function App() {
                 { color: "#00ded8", deg: "120%" },
               ],
             }}
+            border={"2px solid red"}
+            fontFamily="'Courier New', Courier, monospace"
           ></Button>
           <Button
-            btnText="red button"
+            btnText="large info button"
             onClick={click}
             backgroundColor="red"
-            size="sm"
+            size="lg"
             type="info"
           ></Button>
           <Button

@@ -13,12 +13,14 @@ export default function Button({
   icon,
   iconPosition = true,
   outline = false,
+  ...extras
 }) {
   const buttonStyle = {
     borderRadius: "20px",
     background: !outline ? getBackground(backgroundColor) : "white",
     border: outline ? `1px solid ${getBackground(backgroundColor)}` : "none",
     color: outline ? getBackground(backgroundColor) : "white",
+    ...extras,
   };
   let className = "";
   className +=
@@ -35,8 +37,8 @@ export default function Button({
       type="button"
       className={className}
     >
-      {icon && <Icon {...icon}></Icon>}&nbsp;
-      {btnText}
+      {icon && iconPosition && <Icon {...icon}></Icon>}&nbsp;
+      {btnText}&nbsp;{icon && !iconPosition && <Icon {...icon}></Icon>}
     </button>
   );
 }
@@ -46,4 +48,14 @@ Button.propTypes = {
   type: PropTypes.oneOf(["success", "danger", "warning", "info"]),
   /** The content to appear in the Button */
   btnText: PropTypes.string,
+  /** The bacground color of the button - can be a string OR an object */
+  backgroundColor: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  /** The button size you want */
+  size: PropTypes.oneOf(["sm", "md", "lg"]),
+  /** The icon to pass into the button*/
+  icon: PropTypes.object,
+  /** The icon position before/after test */
+  iconPosition: PropTypes.bool,
+  /** Specify if button should have outline and then backgroundColor will be color of outline and text */
+  outline: PropTypes.bool,
 };
