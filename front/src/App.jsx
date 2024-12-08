@@ -2,6 +2,12 @@ import Provider from "./providers/Provider";
 
 import Slider from "react-slick";
 
+import { useState } from "react";
+import Button from "react-bootstrap/Button";
+import ModalBox from "./components/ModalBox";
+import ModalBody from "react-bootstrap/esm/ModalBody";
+import ModalFooter from "react-bootstrap/esm/ModalFooter";
+
 import "./App.scss";
 
 function App() {
@@ -19,6 +25,19 @@ function App() {
   };
 
   const images = import.meta.env.VITE_IMAGE_PATH;
+
+  const [modalShow, setModalShow] = useState(false);
+  const [activeModal, setActiveModal] = useState();
+
+  function handleOpenModal(val) {
+    setActiveModal(val);
+    setModalShow(true);
+  }
+
+  function handleCloseModal() {
+    setActiveModal("");
+    setModalShow(false);
+  }
 
   return (
     <Provider>
@@ -174,6 +193,22 @@ function App() {
             <div class="hero-inner">
               <div class="container-fluid">
                 <div class="hero-content">
+                  <Button
+                    variant="primary"
+                    onClick={() => handleOpenModal("modal-one")}
+                  >
+                    Launch first sample modal!
+                  </Button>
+
+                  <ModalBox
+                    show={modalShow && activeModal === "modal-one"}
+                    modalTitle="Sample title"
+                    onHide={handleCloseModal}
+                  >
+                    <ModalBody>Sample paragraph to test modal body.</ModalBody>
+                    <ModalFooter>Sample footer</ModalFooter>
+                  </ModalBox>
+
                   <div data-swiper-parallax="300" class="slide-title-sub">
                     <h6>There is always hope</h6>
                   </div>
@@ -190,6 +225,27 @@ function App() {
                       deliverance in the face of hardships.
                     </p>
                   </div>
+                  <Button
+                    variant="secondary"
+                    data-target="#modal-two"
+                    onClick={() => handleOpenModal("modal-two")}
+                  >
+                    Launch second sample modal!
+                  </Button>
+
+                  <ModalBox
+                    show={modalShow && activeModal === "modal-two"}
+                    modalTitle="Second modal title"
+                    onHide={handleCloseModal}
+                  >
+                    <ModalBody>
+                      Second sample paragraph to test modal body.
+                    </ModalBody>
+                    <ModalFooter>
+                      Sample paragraph to test for modal footer.
+                    </ModalFooter>
+                  </ModalBox>
+
                   <div class="hero-btn">
                     <a href="" class="theme-btn">
                       GET INSPIRED
