@@ -1,5 +1,4 @@
 import PropTypes from "prop-types";
-import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
 /** This component creates a modal that can be opened and closed with additional parameters that can be passed in via props. */
@@ -19,7 +18,6 @@ export default function ModalBox({
           data-testid="modal"
           show={show}
           {...extras}
-          size="lg"
           aria-labelledby="contained-modal-title-vcenter"
           centered
           scrollable
@@ -31,7 +29,6 @@ export default function ModalBox({
           </Modal.Header>
 
           {children}
-          <Button onClick={onHide}>Close</Button>
         </Modal>
       </div>
     </>

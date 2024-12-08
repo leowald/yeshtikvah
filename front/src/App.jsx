@@ -201,6 +201,7 @@ function App() {
                   </Button>
 
                   <ModalBox
+                    size="lg"
                     show={modalShow && activeModal === "modal-one"}
                     modalTitle="Sample title"
                     onHide={handleCloseModal}
@@ -234,6 +235,7 @@ function App() {
                   </Button>
 
                   <ModalBox
+                    size="lg"
                     show={modalShow && activeModal === "modal-two"}
                     modalTitle="Second modal title"
                     onHide={handleCloseModal}

@@ -24,6 +24,7 @@ function ModalWithHooks() {
         Launch sample modal!
       </Button>
       <ModalBox
+        size="lg"
         show={modalShow}
         onHide={handleChange}
         modalTitle="Testing modal"
@@ -59,6 +60,7 @@ function MultipleModals() {
         </Button>
 
         <ModalBox
+          size="lg"
           show={modalShow && activeModal === "modal-one"}
           modalTitle="Sample title"
           onHide={handleCloseModal}
@@ -76,6 +78,7 @@ function MultipleModals() {
         </Button>
 
         <ModalBox
+          size="lg"
           show={modalShow && activeModal === "modal-two"}
           modalTitle="Second modal title"
           onHide={handleCloseModal}
