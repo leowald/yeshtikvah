@@ -1,0 +1,36 @@
+###How to use Postman with Wordpress API.
+
+Before you can use Postman to edit or add data to Wordpress,  
+you need to set up authentication.
+
+To do that, select Auth (below the url) and enter these details:
+Auth Type: Basic Auth  
+user name: admin  
+Password: KSyX V4Us cthi LkUo Ap4x ofrM
+
+_Note: to save having to enter the authentication details for every new request,_  
+_you could set it up at the collection level and then use 'inherit auth from parent' for each indivitual request_
+
+### Some examples:
+
+#### POST:
+
+```
+url:
+    localhost:8000/wp-json/wp/v2/posts
+
+body (raw text):
+    {"title": "What happened to me", "Content": "this is the story about what happened to me yesterday", "date":"2024-12-10T13:11:20", "status": "publish"}
+```
+
+_Note: if you leave out ‘status: publish’ then the post is created as a draft post._
+
+#### PUT:
+
+```
+url:
+    localhost:8000/wp-json/wp/v2/posts/2
+body (raw text):
+    {"title": "What happened", "content":"this is the altered story"}
+
+```
