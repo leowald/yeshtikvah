@@ -1,6 +1,7 @@
 //creates fake information using 'faker' to produce catagories and stories and add them to the db.json file
 
 import { faker } from "@faker-js/faker";
+import { Children } from "react";
 
 export const data = {
   categories: [],
@@ -15,18 +16,32 @@ function ConvertToSlug(title) {
 }
 
 const categoryID = [];
+const childrenID = [];
+
 export function createRandomCategory() {
-  const name = faker.word.adjective({ length: { min: 3, max: 8 } });
+  const name = faker.word.noun({ length: { min: 3, max: 8 } });
   const id = faker.database.mongodbObjectId();
   categoryID.push(id);
-  const parentID = categoryID[faker.number.int(categoryID.length - 1)];
+  let isSubCategory = faker.datatype.boolean();
+  isSubCategory && childrenID.push(id);
+  const category_children = [];
+  if (!isSubCategory) {
+    for (let index = 0; index < faker.number.int(3); index++) {
+      if (childrenID.length > 0) {
+        let rnd = faker.number.int(childrenID.length - 1);
+        category_children.push(childrenID[rnd]);
+        childrenID.splice(rnd, 1);
+      }
+    }
 
+    //const parentID = categoryID[faker.number.int(categoryID.length - 1)];
+  }
   return {
     id: id,
     count: faker.number.int(1000),
     description: faker.lorem.sentence(),
     slug: faker.helpers.slugify(name),
-    parent_id: parentID !== id ? parentID : 0,
+    category_children: category_children.length > 0 ? category_children : 0,
     name: name,
     image: faker.image.avatar(),
     iconColor: [faker.color.rgb(), faker.color.rgb()],
