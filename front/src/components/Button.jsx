@@ -40,7 +40,8 @@ export default function Button({
       className={className}
     >
       {icon && iconPosition && <Icon {...icon}></Icon>}&nbsp;
-      {btnText}&nbsp;{icon && !iconPosition && <Icon {...icon}></Icon>}
+      {btnText && btnText}&nbsp;
+      {icon && !iconPosition && <Icon {...icon}></Icon>}
     </button>
   );
 }
