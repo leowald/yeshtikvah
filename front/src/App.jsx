@@ -26,19 +26,24 @@ function App() {
 
   const images = import.meta.env.VITE_IMAGE_PATH;
 
-  const [modalShow, setModalShow] = useState(false);
-  const [activeModal, setActiveModal] = useState();
-
-  function handleOpenModal(val) {
-    setActiveModal(val);
-    setModalShow(true);
+  function openHandler(id) {
+    let showElements = document.getElementsByClassName("show");
+    for (let i = 0; i < showElements.length; i++) {
+      if (showElements[i].querySelector(`div #${id}`) != null) {
+        showElements[i].style.display = "block";
+        showElements[i - 1].style.display = "block";
+      }
+    }
   }
-
-  function handleCloseModal() {
-    setActiveModal("");
-    setModalShow(false);
+  function closeHandler(id) {
+    let showElements = document.getElementsByClassName("show");
+    for (let i = 0; i < showElements.length; i++) {
+      if (showElements[i].querySelector(`div #${id}`) != null) {
+        showElements[i].style.display = "none";
+        showElements[i - 1].style.display = "none";
+      }
+    }
   }
-
   return (
     <Provider>
       <div class="page-wrapper">
@@ -195,16 +200,17 @@ function App() {
                 <div class="hero-content">
                   <Button
                     variant="primary"
-                    onClick={() => handleOpenModal("modal-one")}
+                    onClick={() => openHandler("modal-one-test")}
                   >
                     Launch first sample modal!
                   </Button>
 
                   <ModalBox
+                    id="modal-one-test"
                     size="lg"
-                    show={modalShow && activeModal === "modal-one"}
+                    show={true}
                     modalTitle="Sample title"
-                    onHide={handleCloseModal}
+                    onHide={() => closeHandler("modal-one-test")}
                   >
                     <ModalBody>Sample paragraph to test modal body.</ModalBody>
                     <ModalFooter>Sample footer</ModalFooter>
@@ -228,24 +234,20 @@ function App() {
                   </div>
                   <Button
                     variant="secondary"
-                    data-target="#modal-two"
-                    onClick={() => handleOpenModal("modal-two")}
+                    onClick={() => openHandler("modal-two-test")}
                   >
                     Launch second sample modal!
                   </Button>
 
                   <ModalBox
+                    id="modal-two-test"
                     size="lg"
-                    show={modalShow && activeModal === "modal-two"}
-                    modalTitle="Second modal title"
-                    onHide={handleCloseModal}
+                    show={true}
+                    modalTitle="Second title"
+                    onHide={() => closeHandler("modal-two-test")}
                   >
-                    <ModalBody>
-                      Second sample paragraph to test modal body.
-                    </ModalBody>
-                    <ModalFooter>
-                      Sample paragraph to test for modal footer.
-                    </ModalFooter>
+                    <ModalBody>Second paragraph to test modal body.</ModalBody>
+                    <ModalFooter>Sample footer</ModalFooter>
                   </ModalBox>
 
                   <div class="hero-btn">
