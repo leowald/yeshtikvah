@@ -1,7 +1,6 @@
 import Provider from "./providers/Provider";
 
 import Slider from "react-slick";
-
 import "./App.scss";
 
 function App() {

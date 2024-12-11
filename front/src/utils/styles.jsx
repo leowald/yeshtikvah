@@ -7,6 +7,13 @@ Some parameters are optional, so in that case, it sets it to a default mode.
 
  * @param {*} background - takes in either a string as a solid background or object holding an array of colors as a gradient background.
  * @returns the background color based on the param background that is passed in.
+ * {
+              sideCorner: "left",
+              colors: [
+                { color: "#00a7d5", deg: 0 },
+                { color: "#00ded8", deg: 90 },
+              ],
+            }
  */
 
 export function getBackground(background) {
