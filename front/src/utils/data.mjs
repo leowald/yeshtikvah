@@ -22,9 +22,22 @@ export function createRandomCategory() {
   const name = faker.word.noun({ length: { min: 3, max: 8 } });
   const id = faker.database.mongodbObjectId();
   categoryID.push(id);
+  const categoryItem = {
+    id: id,
+    count: faker.number.int(1000),
+    description: faker.lorem.sentence(),
+    slug: faker.helpers.slugify(name),
+    //category_children: category_children.length > 0 ? category_children : 0,
+    name: name,
+    image: faker.image.avatar(),
+    iconColor: [faker.color.rgb(), faker.color.rgb()],
+    color: faker.color.rgb(),
+  };
+
   let isSubCategory = faker.datatype.boolean();
-  isSubCategory && childrenID.push(id);
   const category_children = [];
+  isSubCategory && childrenID.push(categoryItem);
+
   if (!isSubCategory) {
     for (let index = 0; index < faker.number.int(3); index++) {
       if (childrenID.length > 0) {
@@ -32,21 +45,23 @@ export function createRandomCategory() {
         category_children.push(childrenID[rnd]);
         childrenID.splice(rnd, 1);
       }
+      
     }
 
     //const parentID = categoryID[faker.number.int(categoryID.length - 1)];
+
+    return {
+      id: id,
+      count: categoryItem.count,
+      description: categoryItem.description,
+      slug: categoryItem.slug,
+      category_children: category_children.length > 0 ? category_children : 0,
+      name: name,
+      image: categoryItem.image,
+      iconColor: categoryItem.iconColor,
+      color: categoryItem.color,
+    };
   }
-  return {
-    id: id,
-    count: faker.number.int(1000),
-    description: faker.lorem.sentence(),
-    slug: faker.helpers.slugify(name),
-    category_children: category_children.length > 0 ? category_children : 0,
-    name: name,
-    image: faker.image.avatar(),
-    iconColor: [faker.color.rgb(), faker.color.rgb()],
-    color: faker.color.rgb(),
-  };
 }
 
 Array.from({ length: 8 }).forEach(() => {
