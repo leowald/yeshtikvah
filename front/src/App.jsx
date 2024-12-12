@@ -2,7 +2,7 @@ import Provider from "./providers/Provider";
 
 import Slider from "react-slick";
 
-import { useState } from "react";
+import { useRef } from "react";
 import Button from "react-bootstrap/Button";
 import ModalBox from "./components/ModalBox";
 import ModalBody from "react-bootstrap/esm/ModalBody";
@@ -26,24 +26,27 @@ function App() {
 
   const images = import.meta.env.VITE_IMAGE_PATH;
 
+  const myRefs = useRef([]);
+  const pushRef = (el) => myRefs.current.push(el);
   function openHandler(id) {
-    let showElements = document.getElementsByClassName("show");
-    for (let i = 0; i < showElements.length; i++) {
-      if (showElements[i].querySelector(`div #${id}`) != null) {
-        showElements[i].style.display = "block";
-        showElements[i - 1].style.display = "block";
+    for (let i = 0; i < myRefs.current.length; i++) {
+      if (myRefs.current[i]?.dialog.childNodes[0].id == id) {
+        myRefs.current[i].dialog.style.display = "block";
+        myRefs.current[i].backdrop.style.display = "block";
       }
     }
   }
   function closeHandler(id) {
-    let showElements = document.getElementsByClassName("show");
-    for (let i = 0; i < showElements.length; i++) {
-      if (showElements[i].querySelector(`div #${id}`) != null) {
-        showElements[i].style.display = "none";
-        showElements[i - 1].style.display = "none";
+    for (let i = 0; i < myRefs.current.length; i++) {
+      if (myRefs.current[i]?.dialog.childNodes[0].id == id) {
+        myRefs.current[i].dialog.style.display = "none";
+        myRefs.current[i].backdrop.style.display = "none";
       }
     }
+    // myRef.current.backdrop.style.display = "none";
+    //  myRef.current.dialog.style.display = "none";
   }
+
   return (
     <Provider>
       <div class="page-wrapper">
@@ -207,6 +210,7 @@ function App() {
 
                   <ModalBox
                     id="modal-one-test"
+                    ref={pushRef}
                     size="lg"
                     show={true}
                     modalTitle="Sample title"
@@ -232,6 +236,7 @@ function App() {
                       deliverance in the face of hardships.
                     </p>
                   </div>
+
                   <Button
                     variant="secondary"
                     onClick={() => openHandler("modal-two-test")}
@@ -241,12 +246,13 @@ function App() {
 
                   <ModalBox
                     id="modal-two-test"
+                    ref={pushRef}
                     size="lg"
                     show={true}
                     modalTitle="Second title"
                     onHide={() => closeHandler("modal-two-test")}
                   >
-                    <ModalBody>Second paragraph to test modal body.</ModalBody>
+                    <ModalBody>Sample paragraph to test modal body.</ModalBody>
                     <ModalFooter>Sample footer</ModalFooter>
                   </ModalBox>
 
