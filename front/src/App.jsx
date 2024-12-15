@@ -2,12 +2,6 @@ import Provider from "./providers/Provider";
 
 import Slider from "react-slick";
 
-import Button from "react-bootstrap/Button";
-import ModalBox from "./components/ModalBox";
-import ModalBody from "react-bootstrap/esm/ModalBody";
-import ModalFooter from "react-bootstrap/esm/ModalFooter";
-
-import { useState } from "react";
 import "./App.scss";
 
 function App() {
