@@ -2,12 +2,12 @@ import Provider from "./providers/Provider";
 
 import Slider from "react-slick";
 
-import { useRef } from "react";
 import Button from "react-bootstrap/Button";
 import ModalBox from "./components/ModalBox";
 import ModalBody from "react-bootstrap/esm/ModalBody";
 import ModalFooter from "react-bootstrap/esm/ModalFooter";
 
+import { useState } from "react";
 import "./App.scss";
 
 function App() {
@@ -26,27 +26,7 @@ function App() {
 
   const images = import.meta.env.VITE_IMAGE_PATH;
 
-  const myRefs = useRef([]);
-  const pushRef = (el) => myRefs.current.push(el);
-  function openHandler(id) {
-    for (let i = 0; i < myRefs.current.length; i++) {
-      if (myRefs.current[i]?.dialog.childNodes[0].id == id) {
-        myRefs.current[i].dialog.style.display = "block";
-        myRefs.current[i].backdrop.style.display = "block";
-      }
-    }
-  }
-  function closeHandler(id) {
-    for (let i = 0; i < myRefs.current.length; i++) {
-      if (myRefs.current[i]?.dialog.childNodes[0].id == id) {
-        myRefs.current[i].dialog.style.display = "none";
-        myRefs.current[i].backdrop.style.display = "none";
-      }
-    }
-    // myRef.current.backdrop.style.display = "none";
-    //  myRef.current.dialog.style.display = "none";
-  }
-
+  const [isOpen, updateIsOpen] = useState();
   return (
     <Provider>
       <div class="page-wrapper">
@@ -202,19 +182,18 @@ function App() {
               <div class="container-fluid">
                 <div class="hero-content">
                   <Button
+                    onClick={() => updateIsOpen("modal-one-test")}
                     variant="primary"
-                    onClick={() => openHandler("modal-one-test")}
                   >
                     Launch first sample modal!
                   </Button>
 
                   <ModalBox
                     id="modal-one-test"
-                    ref={pushRef}
                     size="lg"
-                    show={true}
+                    show={isOpen == "modal-one-test"}
                     modalTitle="Sample title"
-                    onHide={() => closeHandler("modal-one-test")}
+                    updateIsOpen={updateIsOpen}
                   >
                     <ModalBody>Sample paragraph to test modal body.</ModalBody>
                     <ModalFooter>Sample footer</ModalFooter>
@@ -238,21 +217,20 @@ function App() {
                   </div>
 
                   <Button
+                    onClick={() => updateIsOpen("modal-two-test")}
                     variant="secondary"
-                    onClick={() => openHandler("modal-two-test")}
                   >
-                    Launch second sample modal!
+                    Launch first sample modal!
                   </Button>
 
                   <ModalBox
                     id="modal-two-test"
-                    ref={pushRef}
                     size="lg"
                     show={true}
                     modalTitle="Second title"
-                    onHide={() => closeHandler("modal-two-test")}
+                    updateIsOpen={updateIsOpen}
                   >
-                    <ModalBody>Sample paragraph to test modal body.</ModalBody>
+                    <ModalBody>Second paragraph to test modal body.</ModalBody>
                     <ModalFooter>Sample footer</ModalFooter>
                   </ModalBox>
 

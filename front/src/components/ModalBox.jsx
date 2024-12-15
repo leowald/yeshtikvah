@@ -1,25 +1,33 @@
 import PropTypes from "prop-types";
 import Modal from "react-bootstrap/Modal";
-import { useState, forwardRef, useRef } from "react";
+import { useState, useEffect } from "react";
 /** This component creates a modal that can be opened and closed with additional parameters that can be passed in via props. */
 
-const ModalBox = forwardRef(function ModalBox(
-  {
-    show,
-    onHide,
-    modalTitle,
-    children,
+export default function ModalBox({
+  show,
+  modalTitle,
+  children,
+  updateIsOpen,
 
-    ...extras
-  },
-  ref
-) {
+  ...extras
+}) {
   const [show2, updateShow] = useState(show);
+  console.log(show2);
 
+  useEffect(() => {
+    updateShow(show);
+  }, [updateShow, show]);
   return (
     <div>
-      <Modal ref={ref} data-testid="modal" show={show2} {...extras} centered>
-        <Modal.Header closeButton onHide={onHide}>
+      <Modal
+        onExited={() => updateIsOpen && updateIsOpen("")}
+        data-testid="modal"
+        show={show2}
+        {...extras}
+        centered
+        animation={false}
+      >
+        <Modal.Header closeButton onHide={() => updateShow(false)}>
           <Modal.Title>{modalTitle}</Modal.Title>
         </Modal.Header>
 
@@ -27,9 +35,7 @@ const ModalBox = forwardRef(function ModalBox(
       </Modal>
     </div>
   );
-});
-
-export default ModalBox;
+}
 
 ModalBox.propTypes = {
   /** If the modal should be open or closed. */
