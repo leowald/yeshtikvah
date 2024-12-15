@@ -28,26 +28,21 @@ function App() {
   return (
     <Provider>
       <div class="page-wrapper">
-        <Icon
-          bottomIcon={{ color: "red" }}
-          topIcon={{ color: "white", name: "fa-house", type: "fas" }}
-          size="7"
-          opacity="80%"
-        ></Icon>
         <header id="header">
-          <Card></Card>
           <Button
             icon={{
               topIcon: { color: "pink", name: "fa-heart", type: "fas" },
               size: "5",
               opacity: "90%",
             }}
-            iconPosition={false}
+            iconPosition={true}
             btnText=" small warning button"
             onClickFunction={click}
             backgroundColor="blue"
             size="sm"
             color="pink"
+            fontSize="2rem"
+            borderRadius="200px"
           ></Button>
           <Button
             btnText="green button"
@@ -66,7 +61,7 @@ function App() {
             btnText="large info button"
             onClickFunction={click}
             backgroundColor="red"
-            size="sm"
+            size="lg"
             type="danger"
             fontFamily="'Courier New', Courier, monospace"
           ></Button>
@@ -74,6 +69,7 @@ function App() {
             btnText="red button"
             onClick={click}
             backgroundColor="red"
+            outline="true"
             size="lg"
           ></Button>
           <div class="wpo-site-header wpo-site-header-s1 wpo-site-header-s2">

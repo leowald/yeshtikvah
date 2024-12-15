@@ -16,14 +16,14 @@ export default function Button({
   ...extras
 }) {
   const buttonStyle = {
-    borderRadius: "20px",
     background: !outline ? getBackground(backgroundColor) : "white",
     border: outline ? `1px solid ${getBackground(backgroundColor)}` : "none",
     color: outline ? getBackground(backgroundColor) : "white",
     ...extras,
   };
 
-  let className = "";
+  let className = `${style.button} `;
+  className += extras.borderRadius ? "" : `${style.rd} `;
   className += extras.fontSize
     ? ""
     : (size === "sm" && style.sm) || (size === "lg" && style.lg) || style.md;
@@ -34,13 +34,14 @@ export default function Button({
 
   return (
     <button
-      style={!type ? buttonStyle : { borderRadius: "20px", ...extras }}
+      style={!type ? buttonStyle : { ...extras }}
       onClick={onClickFunction && (() => onClickFunction())}
       type="button"
       className={className}
     >
-      {icon && iconPosition && <Icon {...icon}></Icon>}&nbsp;
-      {btnText && btnText}&nbsp;
+      {icon && iconPosition && <Icon {...icon}></Icon>}
+      {btnText && btnText}
+      {"&nbsp;"}
       {icon && !iconPosition && <Icon {...icon}></Icon>}
     </button>
   );
@@ -48,7 +49,7 @@ export default function Button({
 
 Button.propTypes = {
   /** The bootstrap Button style that you want.  */
-  type: PropTypes.oneOf(["success", "danger", "warning", "info"]),
+  type: PropTypes.oneOf(["success", "danger", "warning", "info", ""]),
   /** The content to appear in the Button */
   btnText: PropTypes.string,
   /** The bacground color of the button - can be a string OR an object */
@@ -59,6 +60,8 @@ Button.propTypes = {
   icon: PropTypes.object,
   /** The icon position before/after test */
   iconPosition: PropTypes.bool,
-  /** Specify if button should have outline and then backgroundColor will be color of outline and text */
+  /** Specify if button should have outline and then backgroundColor will be color of outline and text (background color will be white)*/
   outline: PropTypes.bool,
+  /** function when clicking the button */
+  onClickFunction: PropTypes.func,
 };

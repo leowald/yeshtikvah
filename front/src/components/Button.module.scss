@@ -1,7 +1,13 @@
+.button {
+  display: flex;
+  align-items: center;
+}
+.rd {
+  border-radius: 20px !important;
+}
 .sm {
   padding: 0.25rem 0.5rem !important;
   font-size: 0.875rem !important;
-  vertical-align: middle;
 }
 .md {
   padding: 0.34rem 0.68rem !important;

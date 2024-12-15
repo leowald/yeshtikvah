@@ -26,7 +26,7 @@ export default function Icon({ topIcon, size, bottomIcon, ...extras }) {
         {bottomIcon && (
           <FontAwesomeIcon
             data-testid="bottomIcon"
-            style={bottomIcon.style}
+            //style={bottomIcon.style}
             color={bottomIcon.color}
             icon={`${bottomIcon.name || "fa-circle"} ${
               bottomIcon.type || "fas"
