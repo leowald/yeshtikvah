@@ -13,9 +13,14 @@ export default function ModalBox({
 }) {
   const [showModal, updateShowModal] = useState();
 
+  function closeModal() {
+    updateShowModal(false);
+    onHide("");
+  }
   useEffect(() => {
     updateShowModal(show);
   }, [updateShowModal, show]);
+  console.log(showModal);
   return (
     <div>
       <Modal
@@ -25,7 +30,7 @@ export default function ModalBox({
         centered
         animation={false}
       >
-        <Modal.Header closeButton onHide={() => updateShowModal(false)}>
+        <Modal.Header closeButton onHide={closeModal}>
           <Modal.Title>{modalTitle}</Modal.Title>
         </Modal.Header>
 

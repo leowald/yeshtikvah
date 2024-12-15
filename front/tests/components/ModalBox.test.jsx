@@ -31,6 +31,6 @@ describe("group of tests which test the modal component", () => {
     expect(modal).toBeInTheDocument();
     const user = userEvent.setup();
     await user.click(button);
-    //expect(onHide).toHaveBeenCalled();
+    expect(onHide).toHaveBeenCalled();
   });
 });
