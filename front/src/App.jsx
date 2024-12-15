@@ -26,7 +26,6 @@ function App() {
 
   const images = import.meta.env.VITE_IMAGE_PATH;
 
-  const [isOpen, updateIsOpen] = useState();
   return (
     <Provider>
       <div class="page-wrapper">
@@ -181,24 +180,6 @@ function App() {
             <div class="hero-inner">
               <div class="container-fluid">
                 <div class="hero-content">
-                  <Button
-                    onClick={() => updateIsOpen("modal-one-test")}
-                    variant="primary"
-                  >
-                    Launch first sample modal!
-                  </Button>
-
-                  <ModalBox
-                    id="modal-one-test"
-                    size="lg"
-                    show={isOpen == "modal-one-test"}
-                    modalTitle="Sample title"
-                    onHide={updateIsOpen}
-                  >
-                    <ModalBody>Sample paragraph to test modal body.</ModalBody>
-                    <ModalFooter>Sample footer</ModalFooter>
-                  </ModalBox>
-
                   <div data-swiper-parallax="300" class="slide-title-sub">
                     <h6>There is always hope</h6>
                   </div>
@@ -215,24 +196,6 @@ function App() {
                       deliverance in the face of hardships.
                     </p>
                   </div>
-
-                  <Button
-                    onClick={() => updateIsOpen("modal-two-test")}
-                    variant="secondary"
-                  >
-                    Launch second sample modal!
-                  </Button>
-
-                  <ModalBox
-                    id="modal-two-test"
-                    size="lg"
-                    show={isOpen === "modal-two-test"}
-                    modalTitle="Second title"
-                    onHide={updateIsOpen}
-                  >
-                    <ModalBody>Second paragraph to test modal body.</ModalBody>
-                    <ModalFooter>Sample footer</ModalFooter>
-                  </ModalBox>
 
                   <div class="hero-btn">
                     <a href="" class="theme-btn">
