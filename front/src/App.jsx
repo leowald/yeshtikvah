@@ -193,7 +193,7 @@ function App() {
                     size="lg"
                     show={isOpen == "modal-one-test"}
                     modalTitle="Sample title"
-                    updateIsOpen={updateIsOpen}
+                    onHide={updateIsOpen}
                   >
                     <ModalBody>Sample paragraph to test modal body.</ModalBody>
                     <ModalFooter>Sample footer</ModalFooter>
@@ -220,15 +220,15 @@ function App() {
                     onClick={() => updateIsOpen("modal-two-test")}
                     variant="secondary"
                   >
-                    Launch first sample modal!
+                    Launch second sample modal!
                   </Button>
 
                   <ModalBox
                     id="modal-two-test"
                     size="lg"
-                    show={true}
+                    show={isOpen === "modal-two-test"}
                     modalTitle="Second title"
-                    updateIsOpen={updateIsOpen}
+                    onHide={updateIsOpen}
                   >
                     <ModalBody>Second paragraph to test modal body.</ModalBody>
                     <ModalFooter>Sample footer</ModalFooter>

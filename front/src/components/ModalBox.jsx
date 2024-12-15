@@ -7,27 +7,25 @@ export default function ModalBox({
   show,
   modalTitle,
   children,
-  updateIsOpen,
+  onHide,
 
   ...extras
 }) {
-  const [show2, updateShow] = useState(show);
-  console.log(show2);
+  const [showModal, updateShowModal] = useState();
 
   useEffect(() => {
-    updateShow(show);
-  }, [updateShow, show]);
+    updateShowModal(show);
+  }, [updateShowModal, show]);
   return (
     <div>
       <Modal
-        onExited={() => updateIsOpen && updateIsOpen("")}
         data-testid="modal"
-        show={show2}
+        show={showModal}
         {...extras}
         centered
         animation={false}
       >
-        <Modal.Header closeButton onHide={() => updateShow(false)}>
+        <Modal.Header closeButton onHide={() => updateShowModal(false)}>
           <Modal.Title>{modalTitle}</Modal.Title>
         </Modal.Header>
 
@@ -40,8 +38,12 @@ export default function ModalBox({
 ModalBox.propTypes = {
   /** If the modal should be open or closed. */
   show: PropTypes.bool,
-  /** Function to be called when the modal is closed. */
-  onHide: PropTypes.func,
   /** Title of modal box.*/
   modalTitle: PropTypes.string,
+  /** Size of the modal */
+  size: PropTypes.oneOf(["sm", "lg", "xl"]),
+  /** The content to appear in the Modal Box */
+  children: PropTypes.any,
+  /** The function to be executed onHide. This function is only passed in if show is set to its state variable. */
+  onHide: PropTypes.func,
 };

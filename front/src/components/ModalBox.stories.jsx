@@ -10,89 +10,62 @@ export default {
   tags: ["autodocs"],
 };
 
-function ModalWithHooks() {
-  const [modalShow, setModalShow] = useState(false);
-  const handleChange = () => {
-    if (modalShow) {
-      setModalShow(false);
-    }
-  };
-  return (
-    <div>
-      {" "}
-      <Button variant="primary" onClick={() => setModalShow(true)}>
-        Launch sample modal!
-      </Button>
-      <ModalBox
-        size="lg"
-        show={modalShow}
-        onHide={handleChange}
-        modalTitle="Testing modal"
-      >
-        <ModalBody>
-          <p>Sample paragraph in body</p>
-        </ModalBody>
-        <ModalFooter>Sample footer</ModalFooter>
-      </ModalBox>
-    </div>
-  );
-}
+export const ModalBoxComponent = {
+  args: {
+    children: <ModalBody>Testing modal body</ModalBody>,
+    id: "modal-test",
+    size: "lg",
+    show: true,
+    modalTitle: "Testing title modal",
+  },
+};
 
 function MultipleModals() {
-  const [modalShow, setModalShow] = useState(false);
-  const [activeModal, setActiveModal] = useState();
-
-  function handleOpenModal(val) {
-    setActiveModal(val);
-    setModalShow(true);
-  }
-
-  function handleCloseModal() {
-    setActiveModal("");
-    setModalShow(false);
-  }
+  const [isOpen, updateIsOpen] = useState();
 
   return (
     <div>
       <div>
-        <Button variant="primary" onClick={() => handleOpenModal("modal-one")}>
+        <Button
+          onClick={() => updateIsOpen("modal-one-test")}
+          variant="primary"
+        >
           Launch first sample modal!
         </Button>
 
         <ModalBox
+          id="modal-one-test"
           size="lg"
-          show={modalShow && activeModal === "modal-one"}
+          show={isOpen == "modal-one-test"}
           modalTitle="Sample title"
-          onHide={handleCloseModal}
+          updateIsOpen={updateIsOpen}
         >
           <ModalBody>Sample paragraph to test modal body.</ModalBody>
+          <ModalFooter>Sample footer</ModalFooter>
         </ModalBox>
       </div>
       <div>
         <Button
+          onClick={() => updateIsOpen("modal-two-test")}
           variant="secondary"
-          data-target="#modal-two"
-          onClick={() => handleOpenModal("modal-two")}
         >
           Launch second sample modal!
         </Button>
 
         <ModalBox
+          id="modal-two-test"
           size="lg"
-          show={modalShow && activeModal === "modal-two"}
-          modalTitle="Second modal title"
-          onHide={handleCloseModal}
+          show={isOpen === "modal-two-test"}
+          modalTitle="Second title"
+          updateIsOpen={updateIsOpen}
         >
-          <ModalBody>Second sample paragraph to test modal body.</ModalBody>
-          <ModalFooter>Sample paragraph to test for modal footer.</ModalFooter>
+          <ModalBody>Second paragraph to test modal body.</ModalBody>
+          <ModalFooter>Sample footer</ModalFooter>
         </ModalBox>
       </div>
     </div>
   );
 }
-export const ModalBoxComponent = {
-  render: () => <ModalWithHooks />,
-};
 
 export const MultipleModalsComponent = {
   render: () => <MultipleModals></MultipleModals>,
