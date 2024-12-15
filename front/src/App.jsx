@@ -2,8 +2,6 @@ import Provider from "./providers/Provider";
 import Slider from "react-slick";
 import "./App.scss";
 import Button from "./components/Button";
-import Card from "./components/Card";
-import Icon from "./components/Icon";
 
 function App() {
   const settings = {
@@ -21,57 +19,19 @@ function App() {
 
   const images = import.meta.env.VITE_IMAGE_PATH;
 
-  function click() {
-    console.log("clicked!");
-  }
-
   return (
     <Provider>
       <div class="page-wrapper">
+        <Button
+          backgroundColor="pink"
+          btnText="test button"
+          icon={{
+            topIcon: { color: "lightblue", name: "fa-heart", type: "fas" },
+            size: "2",
+            opacity: "100%",
+          }}
+        ></Button>
         <header id="header">
-          <Button
-            icon={{
-              topIcon: { color: "pink", name: "fa-heart", type: "fas" },
-              size: "5",
-              opacity: "90%",
-            }}
-            iconPosition={true}
-            btnText=" small warning button"
-            onClickFunction={click}
-            backgroundColor="blue"
-            size="sm"
-            color="pink"
-            fontSize="2rem"
-            borderRadius="200px"
-          ></Button>
-          <Button
-            btnText="green button"
-            onClick={() => click}
-            backgroundColor={{
-              sideCorner: "180deg",
-              colors: [
-                { color: "#00a7d5", deg: "40%" },
-                { color: "#00ded8", deg: "120%" },
-              ],
-            }}
-            border={"2px solid red"}
-            fontFamily="'Courier New', Courier, monospace"
-          ></Button>
-          <Button
-            btnText="large info button"
-            onClickFunction={click}
-            backgroundColor="red"
-            size="lg"
-            type="danger"
-            fontFamily="'Courier New', Courier, monospace"
-          ></Button>
-          <Button
-            btnText="red button"
-            onClick={click}
-            backgroundColor="red"
-            outline="true"
-            size="lg"
-          ></Button>
           <div class="wpo-site-header wpo-site-header-s1 wpo-site-header-s2">
             <nav class="navigation navbar navbar-expand-lg navbar-light">
               <div class="container-fluid">

@@ -40,8 +40,17 @@ export default function Button({
       className={className}
     >
       {icon && iconPosition && <Icon {...icon}></Icon>}
-      {btnText && btnText}
-      {"&nbsp;"}
+      {btnText && (
+        <p
+          style={{
+            margin: "0px",
+            marginRight: icon && iconPosition && "10px",
+            marginLeft: icon && !iconPosition && "10px",
+          }}
+        >
+          {btnText}
+        </p>
+      )}
       {icon && !iconPosition && <Icon {...icon}></Icon>}
     </button>
   );
