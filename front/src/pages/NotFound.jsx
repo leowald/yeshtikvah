@@ -1,5 +1,3 @@
-import { useRouteError } from "react-router-dom";
-
 /** This component return an error if an incorrect url is inserted into the browser.
  */
 

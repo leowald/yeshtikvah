@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom";
 
 /** This component wraps each page with the same header and footer layout. */
 
-export default function MainLayout({ children }) {
+export default function MainLayout() {
   const images = import.meta.env.VITE_IMAGE_PATH;
   return (
     <div>
