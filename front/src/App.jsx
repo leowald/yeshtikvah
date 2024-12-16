@@ -189,6 +189,7 @@ function App() {
                       deliverance in the face of hardships.
                     </p>
                   </div>
+
                   <div class="hero-btn">
                     <a href="" class="theme-btn">
                       GET INSPIRED
