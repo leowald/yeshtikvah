@@ -1,7 +1,6 @@
 import Provider from "./providers/Provider";
 import Slider from "react-slick";
 import "./App.scss";
-import Button from "./components/Button";
 
 function App() {
   const settings = {
@@ -22,15 +21,6 @@ function App() {
   return (
     <Provider>
       <div class="page-wrapper">
-        <Button
-          backgroundColor="pink"
-          btnText="test button"
-          icon={{
-            topIcon: { color: "lightblue", name: "fa-heart", type: "fas" },
-            size: "2",
-            opacity: "100%",
-          }}
-        ></Button>
         <header id="header">
           <div class="wpo-site-header wpo-site-header-s1 wpo-site-header-s2">
             <nav class="navigation navbar navbar-expand-lg navbar-light">

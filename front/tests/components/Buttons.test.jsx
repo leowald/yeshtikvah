@@ -10,7 +10,7 @@ describe("group of tests which test the button component", () => {
     backgroundColor = "",
     outline = false,
     size = "md",
-    type = null,
+    theme = null,
     icon = ""
   ) {
     render(
@@ -19,7 +19,7 @@ describe("group of tests which test the button component", () => {
         backgroundColor={backgroundColor}
         outline={outline}
         size={size}
-        type={type}
+        theme={theme}
         icon={icon}
         //iconPosition={iconPosition}
       ></Button>
