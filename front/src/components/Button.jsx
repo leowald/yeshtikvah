@@ -36,7 +36,7 @@ export default function Button({
 
   return (
     <button
-      style={!type ? buttonStyle : { ...extras }}
+      style={!theme ? buttonStyle : { ...extras }}
       onClick={onClickFunction && (() => onClickFunction())}
       type="button"
       className={className}
