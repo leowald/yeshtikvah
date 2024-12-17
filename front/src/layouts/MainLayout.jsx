@@ -1,5 +1,4 @@
 import { Outlet } from "react-router-dom";
-
 /** This component wraps each page with the same header and footer layout. */
 
 export default function MainLayout() {
@@ -151,7 +150,7 @@ export default function MainLayout() {
           </nav>
         </div>
       </header>
-      <Outlet></Outlet>{" "}
+      <Outlet> </Outlet>
       <footer role="footer" class="wpo-site-footer">
         <div class="wpo-top-footer">
           <div class="container">

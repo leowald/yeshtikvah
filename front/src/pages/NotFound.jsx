@@ -1,4 +1,4 @@
-/** This component return an error if an incorrect url is inserted into the browser.
+/** This component returns an error page if an incorrect url is inserted into the browser.
  */
 
 export default function ErrorPage() {

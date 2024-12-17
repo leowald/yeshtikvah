@@ -5,10 +5,8 @@ import { Outlet } from "react-router-dom";
 
 export default function RootLayout() {
   return (
-    <div>
-      <Provider>
-        <Outlet></Outlet>
-      </Provider>
-    </div>
+    <Provider>
+      <Outlet></Outlet>
+    </Provider>
   );
 }
