@@ -6,16 +6,25 @@ import ModalFooter from "react-bootstrap/esm/ModalFooter";
 
 export default {
   component: ModalBox,
-  argTypes: { show: { control: "boolean" } },
   tags: ["autodocs"],
 };
 
-export const ModalBoxComponent = {
+export const ModalBoxOpenComponent = {
   args: {
     children: <ModalBody>Testing modal body</ModalBody>,
     id: "modal-test",
     size: "lg",
-    show: true,
+    show: "true",
+    modalTitle: "Testing title modal",
+  },
+};
+
+export const ModalBoxClosedComponent = {
+  args: {
+    children: <ModalBody>Testing modal body</ModalBody>,
+    id: "modal-test",
+    size: "lg",
+    show: false,
     modalTitle: "Testing title modal",
   },
 };

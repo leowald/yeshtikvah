@@ -15,12 +15,11 @@ export default function ModalBox({
 
   function closeModal() {
     updateShowModal(false);
-    onHide("");
+    onHide();
   }
   useEffect(() => {
     updateShowModal(show);
   }, [updateShowModal, show]);
-  console.log(showModal);
   return (
     <div>
       <Modal
