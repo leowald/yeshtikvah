@@ -15,6 +15,7 @@ const config = {
         extensions: ["ts", "js", "jsx", "mjs"], // file extensions to include
       },
     },
+    "@storybook/addon-styling-webpack",
   ],
   framework: {
     name: "@storybook/react-vite",
