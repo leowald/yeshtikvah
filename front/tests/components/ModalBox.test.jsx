@@ -28,9 +28,9 @@ describe("group of tests which test the modal component", () => {
 
   it("should render a modal component with the size lg and title Testing Title.", () => {
     const { modal } = renderComponent(true, "Testing title", "lg");
-    expect(modal, { name: "Testing title" }).toBeInTheDocument();
+    expect(modal).toBeInTheDocument();
+    expect(screen.getByText("Testing title")).toBeInTheDocument();
     expect(modal).toBeVisible();
-    screen.debug();
     expect(modal).toHaveClass(/lg/i);
   });
 
