@@ -26,7 +26,7 @@ export default function Icon({ topIcon, size, bottomIcon, ...extras }) {
         {bottomIcon && (
           <FontAwesomeIcon
             data-testid="bottomIcon"
-            //style={bottomIcon.style}
+            style={bottomIcon.style}
             color={bottomIcon.color}
             icon={`${bottomIcon.name || "fa-circle"} ${
               bottomIcon.type || "fas"
@@ -36,17 +36,19 @@ export default function Icon({ topIcon, size, bottomIcon, ...extras }) {
             className={styles.iconChild}
           />
         )}
-        <FontAwesomeIcon
-          data-testid="topIcon"
-          style={topIcon.style}
-          color={topIcon.color}
-          icon={`${topIcon.name} ${topIcon.type}`}
-          size={`${size}x`}
-          {...extras}
-          fixedWidth
-          transform="shrink-6"
-          className={styles.iconChild}
-        />
+        {topIcon && (
+          <FontAwesomeIcon
+            data-testid="topIcon"
+            style={topIcon.style}
+            color={topIcon.color}
+            icon={`${topIcon.name} ${topIcon.type}`}
+            size={`${size}x`}
+            {...extras}
+            fixedWidth
+            transform="shrink-6"
+            className={styles.iconChild}
+          />
+        )}
       </div>
     </>
   );

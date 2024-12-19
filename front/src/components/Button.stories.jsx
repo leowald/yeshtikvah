@@ -6,7 +6,8 @@ const backgroundGradient = {
 };
 
 const icon = {
-  topIcon: { color: "red", name: "fa-heart", type: "fas" },
+  topIcon: { color: "red", name: "fa-heart", type: "fas", style: {} },
+  bottomIcon: { color: "white" },
   size: "2",
   opacity: "100%",
 };
@@ -15,7 +16,7 @@ export default {
   component: Button,
 };
 
-export const ButtonComponentGradientBackground = {
+export const ButtonComponentGradientBackgroundWthoutIcon = {
   args: {
     backgroundColor: backgroundGradient,
     btnText: "button with grdient background",
@@ -69,6 +70,29 @@ export const ButtonComponentWithIconAfterText = {
     outline: false,
     icon: icon,
     iconPosition: false,
+  },
+  argTypes: {
+    backgroundColor: {
+      control: { type: "color" },
+    },
+    size: {
+      options: ["sm", "md", "lg"],
+      control: { type: "select" },
+    },
+
+    tags: ["autodocs"],
+  },
+};
+
+function greeting() {
+  alert("good morning!");
+}
+
+export const ButtonComponentWithFunction = {
+  args: {
+    backgroundColor: "blue",
+    btnText: "Click here to get a greeting",
+    onClickFunction: () => greeting(),
   },
   argTypes: {
     backgroundColor: {

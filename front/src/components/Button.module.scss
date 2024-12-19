@@ -1,9 +1,14 @@
 .button {
   display: flex;
   align-items: center;
+  vertical-align: middle;
+  font-family: "Nunito", sans-serif;
+  text-transform: capitalize;
+  text-decoration: underline;
+  font-weight: 600;
 }
 .rd {
-  border-radius: 20px !important;
+  border-radius: 30px !important;
 }
 .sm {
   padding: 0.25rem 0.5rem !important;
@@ -12,10 +17,12 @@
 .md {
   padding: 0.34rem 0.68rem !important;
   font-size: 1.05rem !important;
-  vertical-align: middle;
 }
 .lg {
   padding: 0.5rem 1rem !important;
   font-size: 1.25rem !important;
-  vertical-align: middle;
+}
+
+.button:hover {
+  text-decoration: none;
 }

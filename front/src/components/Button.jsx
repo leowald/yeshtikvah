@@ -7,15 +7,15 @@ import { getBackground } from "../utils/styles.jsx";
 /** This component creates a button in various sizes, colors and designs, with an option of adding an icon as well. */
 
 export default function Button({
-  theme,
-  btnText,
-  onClickFunction,
   backgroundColor,
+  outline = false,
+  btnText,
   size,
+  theme,
   icon,
   iconPosition = true,
-  outline = false,
-  ...extras
+  onClickFunction,
+  ...extras /** Option to add any style, e.g. "border: 2px solid black" etc. */
 }) {
   const buttonStyle = {
     background: !outline ? getBackground(backgroundColor) : "white",
@@ -42,37 +42,35 @@ export default function Button({
       className={className}
     >
       {icon && iconPosition && <Icon {...icon}></Icon>}
-      {btnText && (
-        <p
-          style={{
-            margin: "0px",
-            marginRight: icon && iconPosition && "10px",
-            marginLeft: icon && !iconPosition && "10px",
-          }}
-        >
-          {btnText}
-        </p>
-      )}
+      <div
+        style={{
+          padding: "7px",
+          paddingRight: icon && iconPosition ? "20px" : "7px",
+          paddingLeft: icon && !iconPosition ? "20px" : "7px",
+        }}
+      >
+        {btnText && btnText}
+      </div>
       {icon && !iconPosition && <Icon {...icon}></Icon>}
     </button>
   );
 }
 
 Button.propTypes = {
-  /** The bootstrap Button style that you want.  */
-  theme: PropTypes.oneOf(["success", "danger", "warning", "info", ""]),
+  /** The bootstrap Button style that you want.(optional)  */
+  theme: PropTypes.oneOf(["success", "danger", "warning", "info"]),
   /** The content to appear in the Button */
   btnText: PropTypes.string,
-  /** The bacground color of the button - can be a string OR an object */
+  /** The background color of the button - can be a string(for one color) or an object(for gradient background) */
   backgroundColor: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-  /** The button size you want */
+  /** The button size you want - default is set to md*/
   size: PropTypes.oneOf(["sm", "md", "lg"]),
-  /** The icon to pass into the button*/
+  /** The icon to pass into the button (optional) (see icon component for required / optional props)*/
   icon: PropTypes.object,
-  /** The icon position before/after test */
+  /** The icon position before/after test - default is set to true - before text, false will move the icon to after text */
   iconPosition: PropTypes.bool,
   /** Specify if button should have outline and then backgroundColor will be color of outline and text (background color will be white)*/
   outline: PropTypes.bool,
-  /** function when clicking the button */
+  /** add a function when clicking on the button */
   onClickFunction: PropTypes.func,
 };
