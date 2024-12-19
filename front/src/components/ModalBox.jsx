@@ -46,8 +46,10 @@ ModalBox.propTypes = {
   modalTitle: PropTypes.string,
   /** Size of the modal */
   size: PropTypes.oneOf(["sm", "lg", "xl"]),
-  /** The content to appear in the Modal Box */
-  children: PropTypes.any,
+  /** The content to appear in the Modal Body */
+  modalBody: PropTypes.string,
+  /** The content to appear in the Modal Footer */
+  modalFooter: PropTypes.string,
   /** The function to be executed onHide. This function is only passed in if show is set to its state variable. */
   onHide: PropTypes.func,
 };

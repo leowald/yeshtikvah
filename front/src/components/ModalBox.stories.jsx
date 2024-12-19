@@ -6,12 +6,19 @@ import ModalFooter from "react-bootstrap/esm/ModalFooter";
 
 export default {
   component: ModalBox,
+  render: ({ modalBody, modalFooter, ...args }) => (
+    <ModalBox {...args}>
+      <ModalBody>{modalBody}</ModalBody>
+      <ModalFooter>{modalFooter}</ModalFooter>
+    </ModalBox>
+  ),
   tags: ["autodocs"],
 };
 
 export const ModalBoxOpenComponent = {
   args: {
-    children: <ModalBody>Testing modal body</ModalBody>,
+    modalBody: "testing modal body",
+    modalFooter: "testing modal footer",
     id: "modal-test",
     size: "lg",
     show: "true",
@@ -21,7 +28,8 @@ export const ModalBoxOpenComponent = {
 
 export const ModalBoxClosedComponent = {
   args: {
-    children: <ModalBody>Testing modal body</ModalBody>,
+    modalBody: "testing modal body",
+    modalFooter: "testing modal footer",
     id: "modal-test",
     size: "lg",
     show: false,
