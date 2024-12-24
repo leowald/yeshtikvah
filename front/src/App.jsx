@@ -1,4 +1,5 @@
 import Slider from "react-slick";
+
 import "./App.scss";
 
 function App() {
@@ -27,7 +28,17 @@ function App() {
                 <div data-swiper-parallax="300" class="slide-title-sub">
                   <h6>There is always hope</h6>
                 </div>
-
+                <div data-swiper-parallax="300" class="slide-title">
+                  <h2>Hashem can do anything.</h2>
+                </div>
+                <div data-swiper-parallax="400" class="slide-text">
+                  <p>
+                    Our sages teach that when we despair we destroy our chance
+                    of salvation.
+                  </p>
+                  <p>
+                    Be inspired and inspire others through personal stories of
+                    deliverance in the face of hardships.
                   </p>
                 </div>
                 <div class="hero-btn">
@@ -74,3 +85,4 @@ function App() {
 }
 
 export default App;
+
