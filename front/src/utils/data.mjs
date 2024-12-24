@@ -5,6 +5,7 @@ import { faker } from "@faker-js/faker";
 export const data = {
   categories: [],
   stories: [],
+  menu: { menuLinks: [] },
 };
 
 function ConvertToSlug(title) {
@@ -56,6 +57,43 @@ export function createRandomStory() {
 
 Array.from({ length: 50 }).forEach(() => {
   data.stories.push(createRandomStory());
+});
+
+export function createMenuObject(child) {
+  const title = faker.helpers.arrayElement([
+    "About",
+    "Account",
+    "Contact",
+    "Donate",
+    "FAQ",
+    "Home",
+    "Pesukim",
+    "Shiurim",
+    "Sources",
+    "Stories",
+    "Subscribe",
+  ]);
+  if (!child) {
+    let randomNum = faker.helpers.rangeToNumber({ min: 0, max: 7 });
+    var childrenArray = faker.helpers.multiple(
+      () => createMenuObject("child"),
+      {
+        count: randomNum,
+      }
+    );
+  }
+  return {
+    id: faker.database.mongodbObjectId(),
+    title: title,
+    children: childrenArray ? childrenArray : "",
+    url: childrenArray ? "" : `/${title.toLowerCase()}`,
+    template: childrenArray ? "" : `./pages/${title}`,
+    page_id: faker.number.int(50),
+  };
+}
+
+Array.from({ length: 10 }).forEach(() => {
+  data.menu.menuLinks.push(createMenuObject());
 });
 
 console.log(JSON.stringify(data));
