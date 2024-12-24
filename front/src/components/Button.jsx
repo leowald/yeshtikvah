@@ -7,7 +7,13 @@ import { getBackground } from "../utils/styles.jsx";
 /** This component creates a button in various sizes, colors and designs, with an option of adding an icon as well. */
 
 export default function Button({
-  backgroundColor,
+  backgroundColor = {
+    sideCorner: "180deg",
+    colors: [
+      { color: "#EBB011", deg: "0" },
+      { color: "#ED861D", deg: "99.48%" },
+    ],
+  },
   outline = false,
   btnText,
   size,
@@ -44,9 +50,9 @@ export default function Button({
       {icon && iconPosition && <Icon {...icon}></Icon>}
       <div
         style={{
-          padding: "7px",
-          paddingRight: icon && iconPosition ? "20px" : "7px",
-          paddingLeft: icon && !iconPosition ? "20px" : "7px",
+          padding: "7px 20px",
+          paddingRight: icon && iconPosition ? "30px" : "20px",
+          paddingLeft: icon && !iconPosition ? "30px" : "20px",
         }}
       >
         {btnText && btnText}

@@ -1,10 +1,27 @@
+@import "../sass/helpers/mixins";
+
+@mixin breakpoints($point) {
+  @if $point==small {
+    @media (max-width: 500px) {
+      @content;
+    }
+  } @else if $point==medium {
+    @media (max-width: 780px) {
+      @content;
+    }
+  } @else if $point==large {
+    @media (max-width: 1200px) {
+      @content;
+    }
+  }
+}
+
 .button {
   display: flex;
   align-items: center;
   vertical-align: middle;
   font-family: "Nunito", sans-serif;
   text-transform: capitalize;
-  text-decoration: underline;
   font-weight: 600;
 }
 .rd {
@@ -13,14 +30,27 @@
 .sm {
   padding: 0.25rem 0.5rem !important;
   font-size: 0.875rem !important;
+  @include breakpoints(medium) {
+    font-size: 0.75rem !important;
+    padding: 0.12rem 0.2rem !important;
+  }
 }
 .md {
   padding: 0.34rem 0.68rem !important;
   font-size: 1.05rem !important;
+
+  @include breakpoints(medium) {
+    font-size: 0.9rem !important;
+    padding: 0.15rem 0.3rem !important;
+  }
 }
 .lg {
   padding: 0.5rem 1rem !important;
   font-size: 1.25rem !important;
+  @include breakpoints(medium) {
+    padding: 0.2rem 0.4rem !important;
+    font-size: 1rem !important;
+  }
 }
 
 .button:hover {
