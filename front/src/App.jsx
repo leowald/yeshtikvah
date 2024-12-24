@@ -1,6 +1,5 @@
 import Slider from "react-slick";
 import "./App.scss";
-import Button from "./components/Button";
 
 function App() {
   const settings = {
@@ -20,22 +19,6 @@ function App() {
 
   return (
     <div class="page-wrapper">
-      <Button
-        btnText="test button"
-        backgroundColor={{
-          colors: [{ color: "green" }, { color: "red", deg: "20%" }],
-          sideCorner: "90deg in oklab",
-        }}
-        outline="true"
-      ></Button>
-      <Button
-        btnText="another button"
-        backgroundColor={{
-          colors: [{ color: "lightblue" }, { color: "darkblue", deg: "20%" }],
-          sideCorner: "to right",
-        }}
-        outline="true"
-      ></Button>
       <section class="static-hero-s2">
         <div class="hero-container">
           <div class="hero-inner">

@@ -7,7 +7,13 @@ import { getBackground } from "../utils/styles.jsx";
 /** This component creates a button in various sizes, colors and designs, with an option of adding an icon as well. */
 
 export default function Button({
-  backgroundColor,
+  backgroundColor = {
+    sideCorner: "180deg",
+    colors: [
+      { color: "#EBB011", deg: "0" },
+      { color: "#ED861D", deg: "99.48%" },
+    ],
+  },
   outline = false,
   btnText,
   size,
@@ -24,36 +30,42 @@ export default function Button({
     right: 0,
     bottom: 0,
     borderRadius: "30px",
-    border: "1px solid transparent",
+    border: "2px solid transparent",
     background: `${getBackground(backgroundColor)} padding-box, ${getBackground(
       backgroundColor
     )} border-box`,
-    WebkitMask: getBackground(backgroundColor),
+    WebkitMask:
+      "linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0)",
     maskComposite: "exclude",
     webkitMaskComposite: "xor",
-    zIndex: 0,
+    zIndex: -1, // Behind the button
   };
 
   const textGradient = {
     color: "transparent",
-    background: getBackground(backgroundColor), // Change this as per your design need
+    background: getBackground(backgroundColor),
     WebkitBackgroundClip: "text",
     backgroundClip: "text",
     WebkitTextFillColor: "transparent",
     fontVariant: "small-caps",
-    padding: "10px 20px", // Adjust padding to suit your design
-    zIndex: 1,
+    zIndex: 1, //bring to front
     position: "relative",
+    padding: "7px",
+    paddingRight: icon && iconPosition ? "20px" : "7px",
+    paddingLeft: icon && !iconPosition ? "20px" : "7px",
   };
 
   const buttonStyle = {
     background: !outline ? getBackground(backgroundColor) : "white",
     border:
-      outline && backgroundColor.type == "string"
+      outline && typeof backgroundColor == "string"
         ? `1px solid ${getBackground(backgroundColor)}`
         : "none",
-    color: outline ? getBackground(backgroundColor) : "white",
+    color: outline
+      ? typeof backgroundColor == "string" && getBackground(backgroundColor)
+      : "white",
     position: "relative",
+    zIndex: 0,
     ...extras,
   };
 
@@ -77,17 +89,20 @@ export default function Button({
       >
         {icon && iconPosition && <Icon {...icon}></Icon>}
         <div
-          style={{
-            padding: "7px",
-            paddingRight: icon && iconPosition ? "20px" : "7px",
-            paddingLeft: icon && !iconPosition ? "20px" : "7px",
-            ...textGradient,
-          }}
+          style={
+            !theme && outline && typeof backgroundColor == "object"
+              ? textGradient
+              : {
+                  padding: "7px",
+                  paddingRight: icon && iconPosition ? "20px" : "7px",
+                  paddingLeft: icon && !iconPosition ? "20px" : "7px",
+                }
+          }
         >
           {btnText && btnText}
         </div>
         {icon && !iconPosition && <Icon {...icon}></Icon>}
-        {outline && backgroundColor.type == "object" && (
+        {!theme && outline && typeof backgroundColor == "object" && (
           <div style={outlineGradient} />
         )}
       </button>
