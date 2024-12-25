@@ -47,6 +47,13 @@ export default function Button({
     ? ` d-flex btn btn${outline ? "-outline-" : "-"}${theme}`
     : "";
 
+  let textClass = `${style.text} `;
+  textClass += icon
+    ? !iconPosition
+      ? `${style.textRight} `
+      : `${style.textLeft} `
+    : "";
+
   return (
     <div>
       <button
@@ -56,15 +63,7 @@ export default function Button({
         className={className}
       >
         {icon && iconPosition && <Icon {...icon}></Icon>}
-        <div
-          style={{
-            padding: "20px",
-            paddingRight: icon && iconPosition ? "25px" : "20px",
-            paddingLeft: icon && !iconPosition ? "25px" : "7px",
-          }}
-        >
-          {btnText && btnText}
-        </div>
+        <div className={textClass}>{btnText && btnText}</div>
         {icon && !iconPosition && <Icon {...icon}></Icon>}
       </button>
     </div>
