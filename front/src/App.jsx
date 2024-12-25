@@ -1,6 +1,5 @@
 import Slider from "react-slick";
 import "./App.scss";
-import Button from "./components/Button";
 
 function App() {
   const settings = {
@@ -20,26 +19,6 @@ function App() {
 
   return (
     <div class="page-wrapper">
-      <Button
-        btnText="GET INSPIRED"
-        backgroundColor={{
-          sideCorner: "180deg",
-          colors: [
-            { color: "#EBB011", deg: "0" },
-            { color: "#ED861D", deg: "99.48%" },
-          ],
-        }}
-        icon={{
-          topIcon: {
-            color: "green",
-            name: "fa-house",
-            type: "fas",
-          },
-          size: "2",
-        }}
-        iconPosition={true}
-        outline="true"
-      ></Button>
       <section class="static-hero-s2">
         <div class="hero-container">
           <div class="hero-inner">

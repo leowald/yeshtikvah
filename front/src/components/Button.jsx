@@ -43,6 +43,7 @@ export default function Button({
 
   const textGradient = {
     background: getBackground(backgroundColor),
+    backgroundClip: "text",
   };
 
   let className = `${style.button} `;
@@ -81,10 +82,9 @@ export default function Button({
         <div
           className={textClass}
           style={
-            !theme &&
-            outline &&
-            typeof backgroundColor == "object" &&
-            textGradient
+            !theme && outline && typeof backgroundColor == "object"
+              ? textGradient
+              : {}
           }
         >
           {btnText && btnText}

@@ -25,7 +25,6 @@
     border-radius: 30px;
   }
 }
-
 .outlineGradient {
   position: absolute;
   top: 0;
@@ -42,7 +41,6 @@
 .textGradient {
   color: transparent;
   -webkit-background-clip: text;
-  background-clip: text;
   -webkit-text-fill-color: transparent;
   font-variant: small-caps;
   z-index: 1; //bring to front
