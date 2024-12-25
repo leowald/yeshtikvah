@@ -5,7 +5,7 @@ import { faker } from "@faker-js/faker";
 export const data = {
   categories: [],
   stories: [],
-  menu: {},
+  menu: [],
 };
 
 function ConvertToSlug(title) {
