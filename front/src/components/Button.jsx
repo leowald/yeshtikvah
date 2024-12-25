@@ -23,38 +23,6 @@ export default function Button({
   onClickFunction,
   ...extras /** Option to add any style, e.g. "border: 2px solid black" etc. */
 }) {
-  const outlineGradient = {
-    position: "absolute",
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    borderRadius: "30px",
-    border: "2px solid transparent",
-    background: `${getBackground(backgroundColor)} padding-box, ${getBackground(
-      backgroundColor
-    )} border-box`,
-    WebkitMask:
-      "linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0)",
-    maskComposite: "exclude",
-    webkitMaskComposite: "xor",
-    zIndex: -1, // Behind the button
-  };
-
-  const textGradient = {
-    color: "transparent",
-    background: getBackground(backgroundColor),
-    WebkitBackgroundClip: "text",
-    backgroundClip: "text",
-    WebkitTextFillColor: "transparent",
-    fontVariant: "small-caps",
-    zIndex: 1, //bring to front
-    position: "relative",
-    padding: "7px",
-    paddingRight: icon && iconPosition ? "20px" : "7px",
-    paddingLeft: icon && !iconPosition ? "20px" : "7px",
-  };
-
   const buttonStyle = {
     background: !outline ? getBackground(backgroundColor) : "white",
     border:
@@ -64,9 +32,17 @@ export default function Button({
     color: outline
       ? typeof backgroundColor == "string" && getBackground(backgroundColor)
       : "white",
-    position: "relative",
-    zIndex: 0,
     ...extras,
+  };
+
+  const outlineGradient = {
+    background: `${getBackground(backgroundColor)} padding-box, ${getBackground(
+      backgroundColor
+    )} border-box`,
+  };
+
+  const textGradient = {
+    background: getBackground(backgroundColor),
   };
 
   let className = `${style.button} `;
@@ -79,6 +55,20 @@ export default function Button({
     ? ` d-flex btn btn${outline ? "-outline-" : "-"}${theme}`
     : "";
 
+  let outlineClass = `${style.outlineGradient} `;
+  outlineClass += extras.borderRadius ? "" : `${style.rd} `;
+
+  let textClass = `${style.text} `;
+  textClass += icon
+    ? !iconPosition
+      ? `${style.textRight} `
+      : `${style.textLeft} `
+    : "";
+  textClass +=
+    !theme && outline && typeof backgroundColor == "object"
+      ? `${style.textGradient}`
+      : "";
+
   return (
     <div>
       <button
@@ -89,21 +79,19 @@ export default function Button({
       >
         {icon && iconPosition && <Icon {...icon}></Icon>}
         <div
+          className={textClass}
           style={
-            !theme && outline && typeof backgroundColor == "object"
-              ? textGradient
-              : {
-                  padding: "7px",
-                  paddingRight: icon && iconPosition ? "20px" : "7px",
-                  paddingLeft: icon && !iconPosition ? "20px" : "7px",
-                }
+            !theme &&
+            outline &&
+            typeof backgroundColor == "object" &&
+            textGradient
           }
         >
           {btnText && btnText}
         </div>
         {icon && !iconPosition && <Icon {...icon}></Icon>}
         {!theme && outline && typeof backgroundColor == "object" && (
-          <div style={outlineGradient} />
+          <div style={outlineGradient} className={outlineClass} />
         )}
       </button>
     </div>

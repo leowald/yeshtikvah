@@ -4,7 +4,7 @@
 .button {
   text-transform: capitalize;
   -webkit-backface-visibility: hidden;
-  z-index: 1;
+  z-index: 0;
   position: relative;
   font-family: $heading-font;
   font-weight: 700;
@@ -26,6 +26,39 @@
   }
 }
 
+.outlineGradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  //border-radius: 30px;
+  border: 2px solid transparent;
+  -webkit-mask: linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: xor;
+  z-index: -1;
+}
+.textGradient {
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-variant: small-caps;
+  z-index: 1; //bring to front
+  position: relative;
+}
+.text {
+  padding: 7px 15px;
+}
+.textRight {
+  padding: 7px 5px 7px 15px;
+  //padding-right: 5px;
+}
+.textLeft {
+  padding: 7px 15px 7px 5px;
+  //padding-left: 5px;
+}
 .rd {
   border-radius: 30px !important;
 }
