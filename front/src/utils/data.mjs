@@ -5,7 +5,7 @@ import { faker } from "@faker-js/faker";
 export const data = {
   categories: [],
   stories: [],
-  menu: { menuLinks: [] },
+  menu: {},
 };
 
 function ConvertToSlug(title) {
@@ -82,9 +82,18 @@ export function createMenuObject(child) {
       }
     );
   }
+  if (title == "Home") {
+    return {
+      id: faker.database.mongodbObjectId(),
+      title: faker.word.noun(),
+      children: childrenArray ? childrenArray : "",
+      url: childrenArray ? "" : `/`,
+      template: childrenArray ? "" : `./App`,
+    };
+  }
   return {
     id: faker.database.mongodbObjectId(),
-    title: title,
+    title: faker.word.noun(),
     children: childrenArray ? childrenArray : "",
     url: childrenArray ? "" : `/${title.toLowerCase()}`,
     template: childrenArray ? "" : `./pages/${title}`,
@@ -93,7 +102,7 @@ export function createMenuObject(child) {
 }
 
 Array.from({ length: 10 }).forEach(() => {
-  data.menu.menuLinks.push(createMenuObject());
+  data.menu.push(createMenuObject());
 });
 
 console.log(JSON.stringify(data));
