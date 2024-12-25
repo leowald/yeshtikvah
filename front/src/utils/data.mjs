@@ -61,12 +61,12 @@ Array.from({ length: 50 }).forEach(() => {
 
 export function createMenuObject(child) {
   const title = faker.helpers.arrayElement([
-    "About",
+    "Page",
     "Account",
     "Contact",
     "Donate",
     "FAQ",
-    "Home",
+    "App",
     "Pesukim",
     "Shiurim",
     "Sources",
@@ -82,7 +82,7 @@ export function createMenuObject(child) {
       }
     );
   }
-  if (title == "Home") {
+  if (title == "App") {
     return {
       id: faker.database.mongodbObjectId(),
       title: faker.word.noun(),
@@ -97,7 +97,7 @@ export function createMenuObject(child) {
     children: childrenArray ? childrenArray : "",
     url: childrenArray ? "" : `/${title.toLowerCase()}`,
     template: childrenArray ? "" : `./pages/${title}`,
-    page_id: faker.number.int(50),
+    page_id: title == "Page" ? faker.number.int(50) : "",
   };
 }
 
