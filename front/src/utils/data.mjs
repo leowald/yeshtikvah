@@ -86,18 +86,34 @@ export function createMenuObject(child) {
     return {
       id: faker.database.mongodbObjectId(),
       title: faker.word.noun(),
-      children: childrenArray ? childrenArray : "",
-      url: childrenArray ? "" : `/`,
-      template: childrenArray ? "" : `./App`,
+      children:
+        Array.isArray(childrenArray) && childrenArray.length !== 0
+          ? childrenArray
+          : "",
+      url:
+        Array.isArray(childrenArray) && childrenArray.length !== 0 ? "" : `/`,
+      template:
+        Array.isArray(childrenArray) && childrenArray.length !== 0
+          ? ""
+          : `./App`,
     };
   }
   return {
     id: faker.database.mongodbObjectId(),
     title: faker.word.noun(),
-    children: childrenArray ? childrenArray : "",
-    url: childrenArray ? "" : `/${title.toLowerCase()}`,
-    template: childrenArray ? "" : `./pages/${title}`,
-    page_id: title == "Page" ? faker.number.int(50) : "",
+    children:
+      Array.isArray(childrenArray) && childrenArray.length !== 0
+        ? childrenArray
+        : "",
+    url:
+      Array.isArray(childrenArray) && childrenArray.length !== 0
+        ? ""
+        : `/${title.toLowerCase()}`,
+    template:
+      Array.isArray(childrenArray) && childrenArray.length !== 0
+        ? ""
+        : `./pages/${title}`,
+    page_id: title === "Page" ? faker.number.int(50) : "",
   };
 }
 
