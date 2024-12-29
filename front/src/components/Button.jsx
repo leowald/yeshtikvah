@@ -41,8 +41,7 @@ export default function Button({
     backgroundClip: "text",
   };
 
-  let btnClass = `${style.btn} `;
-  btnClass += extras.fontSize ? "" : style[size];
+  let btnClass = `${style.btn} ${style[size]}`;
   btnClass += theme
     ? ` ${outline ? style[`${theme}_outline`] : style[theme]}`
     : "";

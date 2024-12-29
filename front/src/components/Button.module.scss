@@ -62,29 +62,29 @@
   //padding-left: 5px;
 }
 .sm {
-  padding: 0.25rem 0.5rem !important;
-  font-size: 0.875rem !important;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
 
   @include media-query(767px) {
-    font-size: 0.75rem !important;
-    padding: 0.12rem 0.2rem !important;
+    font-size: 0.75rem;
+    padding: 0.12rem 0.2rem;
   }
 }
 .md {
-  padding: 0.34rem 0.68rem !important;
-  font-size: 1.05rem !important;
+  padding: 0.34rem 0.68rem;
+  font-size: 1.05rem;
 
   @include media-query(767px) {
-    font-size: 0.9rem !important;
-    padding: 0.15rem 0.3rem !important;
+    font-size: 0.9rem;
+    padding: 0.15rem 0.3rem;
   }
 }
 .lg {
-  padding: 0.5rem 1rem !important;
-  font-size: 1.25rem !important;
+  padding: 0.5rem 1rem;
+  font-size: 1.25rem;
   @include media-query(767px) {
-    padding: 0.2rem 0.4rem !important;
-    font-size: 1rem !important;
+    padding: 0.2rem 0.4rem;
+    font-size: 1rem;
   }
 }
 
