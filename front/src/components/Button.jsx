@@ -7,57 +7,45 @@ import { getBackground } from "../utils/styles.jsx";
 /** This component creates a button in various sizes, colors and designs, with an option of adding an icon as well. */
 
 export default function Button({
-  backgroundColor = {
-    sideCorner: "180deg",
-    colors: [
-      { color: "#EBB011", deg: "0" },
-      { color: "#ED861D", deg: "99.48%" },
-    ],
-  },
+  backgroundColor,
   outline = false,
   btnText,
-  size,
+  size = "md",
   theme,
   icon,
   iconPosition = true,
   onClickFunction,
   ...extras /** Option to add any style, e.g. "border: 2px solid black" etc. */
 }) {
+  /**style for button based on props*/
   const buttonStyle = {
     background: !outline ? getBackground(backgroundColor) : "white",
-    border:
-      outline && typeof backgroundColor == "string"
-        ? `1px solid ${getBackground(backgroundColor)}`
-        : "none",
-    color: outline
-      ? typeof backgroundColor == "string" && getBackground(backgroundColor)
-      : "white",
+    color: outline ? getBackground(backgroundColor) : "white",
     ...extras,
   };
 
-  const outlineGradient = {
-    background: `${getBackground(backgroundColor)} padding-box, ${getBackground(
-      backgroundColor
-    )} border-box`,
+  /**style for outline based on background color*/
+  const outlineStyle = {
+    background:
+      typeof backgroundColor == "object"
+        ? `${getBackground(backgroundColor)} padding-box, ${getBackground(
+            backgroundColor
+          )} border-box`
+        : `${getBackground(backgroundColor)} border-box`,
+    ...extras,
   };
 
+  /**style to be applied to text if gradient text is needed*/
   const textGradient = {
     background: getBackground(backgroundColor),
     backgroundClip: "text",
   };
 
-  let className = `${style.button} `;
-  className += extras.borderRadius ? "" : `${style.rd} `;
-  className += extras.fontSize
-    ? ""
-    : (size === "sm" && style.sm) || (size === "lg" && style.lg) || style.md;
-
-  className += theme
-    ? ` d-flex btn btn${outline ? "-outline-" : "-"}${theme}`
+  let btnClass = `${style.btn} `;
+  btnClass += extras.fontSize ? "" : style[size];
+  btnClass += theme
+    ? ` ${outline ? style[`${theme}_outline`] : style[theme]}`
     : "";
-
-  let outlineClass = `${style.outlineGradient} `;
-  outlineClass += extras.borderRadius ? "" : `${style.rd} `;
 
   let textClass = `${style.text} `;
   textClass += icon
@@ -73,25 +61,18 @@ export default function Button({
   return (
     <div>
       <button
-        style={!theme ? buttonStyle : { ...extras, position: "relative" }}
-        onClick={onClickFunction && (() => onClickFunction())}
+        style={!theme ? buttonStyle : { ...extras }}
+        onClick={onClickFunction}
         type="button"
-        className={className}
+        className={btnClass}
       >
         {icon && iconPosition && <Icon {...icon}></Icon>}
-        <div
-          className={textClass}
-          style={
-            !theme && outline && typeof backgroundColor == "object"
-              ? textGradient
-              : {}
-          }
-        >
-          {btnText && btnText}
+        <div className={textClass} style={outline ? textGradient : {}}>
+          {btnText}
         </div>
         {icon && !iconPosition && <Icon {...icon}></Icon>}
-        {!theme && outline && typeof backgroundColor == "object" && (
-          <div style={outlineGradient} className={outlineClass} />
+        {outline && !theme && (
+          <div style={outlineStyle} className={style.outline} />
         )}
       </button>
     </div>

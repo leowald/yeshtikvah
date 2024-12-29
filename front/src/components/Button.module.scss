@@ -1,7 +1,7 @@
 @import "../sass/helpers/mixins";
 @import "../sass/helpers/variables";
 
-.button {
+.btn {
   text-transform: capitalize;
   -webkit-backface-visibility: hidden;
   z-index: 0;
@@ -11,6 +11,8 @@
   display: flex;
   align-items: center;
   vertical-align: middle;
+  border: 0;
+  border-radius: 30px;
 
   &:after {
     position: absolute;
@@ -25,18 +27,20 @@
     border-radius: 30px;
   }
 }
-.outlineGradient {
+.outline {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  //border-radius: 30px;
-  border: 2px solid transparent;
+  border-radius: 30px;
+  border: 1px solid transparent;
   -webkit-mask: linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0);
   mask-composite: exclude;
   -webkit-mask-composite: xor;
   z-index: -1;
+}
+.btn-outline-info {
 }
 .textGradient {
   color: transparent;
@@ -56,9 +60,6 @@
 .textLeft {
   padding: 7px 15px 7px 5px;
   //padding-left: 5px;
-}
-.rd {
-  border-radius: 30px !important;
 }
 .sm {
   padding: 0.25rem 0.5rem !important;
@@ -89,6 +90,43 @@
 
 .button:hover {
   text-decoration: none;
+}
+.success {
+  background-color: #28a745;
+  color: $white;
+}
+.danger {
+  background-color: #dc3545;
+  color: $white;
+}
+.warning {
+  background-color: #ffc107;
+  color: #000;
+}
+.info {
+  background-color: #17a2b8;
+  color: $white;
+}
+
+.success_outline {
+  color: #28a745;
+  border: 1px solid #28a745;
+  background-color: $white;
+}
+.danger_outline {
+  color: #dc3545;
+  border: 1px solid #dc3545;
+  background-color: $white;
+}
+.warning_outline {
+  color: #ffc107;
+  border: 1px solid #ffc107;
+  background-color: $white;
+}
+.info_outline {
+  color: #17a2b8;
+  border: 1px solid #17a2b8;
+  background-color: $white;
 }
 
 /*
