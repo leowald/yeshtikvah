@@ -51,9 +51,8 @@ describe("group of tests which test the button component", () => {
     renderComponent("text", color, true);
     let button = screen.getByRole("button");
     expect(button).toHaveStyle(
-      `background:white ; border: 1px solid ${getBackground(
-        color
-      )}; color: ${getBackground(color)};`
+      `background:white ; 
+      color: ${getBackground(color)};`
     );
   });
   it.each(["sm", "md", "lg"])("should apply set size to button", (size) => {

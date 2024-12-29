@@ -79,8 +79,8 @@ export default function Button({
 }
 
 Button.propTypes = {
-  /** The bootstrap Button style that you want.(optional)  */
-  theme: PropTypes.oneOf(["success", "danger", "warning", "info"]),
+  /** The bootstrap Button style that you want.(optional). The empty theme is to remove all themes  */
+  theme: PropTypes.oneOf(["success", "danger", "warning", "info", ""]),
   /** The content to appear in the Button */
   btnText: PropTypes.string,
   /** The background color of the button - can be a string(for one color) or an object(for gradient background) */
