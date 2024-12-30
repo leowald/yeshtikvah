@@ -113,7 +113,11 @@ export function createMenuObject(child) {
       Array.isArray(childrenArray) && childrenArray.length !== 0
         ? ""
         : `./pages/${title}`,
-    page_id: title === "Page" ? faker.number.int(50) : "",
+    page_id:
+      (Array.isArray(childrenArray) && childrenArray.length !== 0) ||
+      title !== "Page"
+        ? ""
+        : faker.number.int(50),
   };
 }
 
