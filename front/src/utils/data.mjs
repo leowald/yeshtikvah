@@ -5,7 +5,9 @@ import { faker } from "@faker-js/faker";
 export const data = {
   categories: [],
   stories: [],
+  menu: [],
   logo: [],
+
 };
 
 function ConvertToSlug(title) {
@@ -59,6 +61,73 @@ Array.from({ length: 50 }).forEach(() => {
   data.stories.push(createRandomStory());
 });
 
+
+export function createMenuObject(child) {
+  const title = faker.helpers.arrayElement([
+    "Page",
+    "Account",
+    "Contact",
+    "Donate",
+    "FAQ",
+    "App",
+    "Pesukim",
+    "Shiurim",
+    "Sources",
+    "Stories",
+    "Subscribe",
+  ]);
+  if (!child) {
+    let randomNum = faker.helpers.rangeToNumber({ min: 0, max: 7 });
+    var childrenArray = faker.helpers.multiple(
+      () => createMenuObject("child"),
+      {
+        count: randomNum,
+      }
+    );
+  }
+  if (title == "App") {
+    return {
+      id: faker.database.mongodbObjectId(),
+      title: faker.word.noun(),
+      children:
+        Array.isArray(childrenArray) && childrenArray.length !== 0
+          ? childrenArray
+          : "",
+      url:
+        Array.isArray(childrenArray) && childrenArray.length !== 0 ? "" : `/`,
+      template:
+        Array.isArray(childrenArray) && childrenArray.length !== 0
+          ? ""
+          : `./App`,
+    };
+  }
+  return {
+    id: faker.database.mongodbObjectId(),
+    title: faker.word.noun(),
+    children:
+      Array.isArray(childrenArray) && childrenArray.length !== 0
+        ? childrenArray
+        : "",
+    url:
+      Array.isArray(childrenArray) && childrenArray.length !== 0
+        ? ""
+        : `/${title.toLowerCase()}`,
+    template:
+      Array.isArray(childrenArray) && childrenArray.length !== 0
+        ? ""
+        : `./pages/${title}`,
+    page_id:
+      (Array.isArray(childrenArray) && childrenArray.length !== 0) ||
+      title !== "Page"
+        ? ""
+        : faker.number.int(50),
+  };
+}
+
+Array.from({ length: 10 }).forEach(() => {
+  data.menu.push(createMenuObject());
+});
+
 export function createLogo() {
   // get random logo from array
   const imgName = faker.helpers.arrayElement([
@@ -79,5 +148,6 @@ export function createLogo() {
 }
 
 data.logo.push(createLogo());
+
 
 console.log(JSON.stringify(data));
