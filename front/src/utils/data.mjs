@@ -124,7 +124,7 @@ export function createMenuObject(child) {
   };
 }
 
-Array.from({ length: 10 }).forEach(() => {
+Array.from({ length: 5 }).forEach(() => {
   data.menu.push(createMenuObject());
 });
 
