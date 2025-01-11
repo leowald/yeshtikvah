@@ -1,6 +1,6 @@
 <?php
 add_action( 'wp_enqueue_scripts', 'enqueue_parent_styles' );
-add_action('template_redirect', 'disable_wp_frontend');
+//add_action('template_redirect', 'disable_wp_frontend');
 
 function disable_wp_frontend() {
     // If it's an API request or an admin page, allow it
