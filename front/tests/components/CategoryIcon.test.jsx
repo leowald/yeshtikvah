@@ -3,7 +3,7 @@ import { describe, expect, it } from "vitest";
 import CategoryIcon from "../../src/components/CategoryIcon";
 
 const extImg = "https://avatars.githubusercontent.com/u/52691663";
-const intImg = "2.png";
+const intImg = "Pic1.png";
 
 const imageIconLocal = {
   src: intImg,
@@ -18,25 +18,22 @@ const imageIconExternal = {
 };
 
 describe("group of tests which test the CategoryIcon component", () => {
-  function renderComponent(imageIcon, size) {
-    render(<CategoryIcon imageIcon={imageIcon} size={size} />);
+  function renderComponent(imageIcon) {
+    render(<CategoryIcon imageIcon={imageIcon} />);
   }
 
-  it("should contain an external image, with a class containing the words 'small'", () => {
-    renderComponent(imageIconExternal, "small");
+  it("should contain an external image", () => {
+    renderComponent(imageIconExternal);
     let img = screen.getByRole("img");
     expect(img).toHaveAttribute("src", extImg);
-    expect(img).toHaveClass(/small/i);
   });
 
-  it("should contain local image with a class containing the wors 'medium'", () => {
-    renderComponent(imageIconLocal, "medium");
+  it("should contain local image", () => {
+    renderComponent(imageIconLocal);
     let img = screen.getByRole("img");
     expect(img).toHaveAttribute(
       "src",
       import.meta.env.VITE_IMAGE_PATH + intImg
     );
-
-    expect(img).toHaveClass(/medium/i);
   });
 });

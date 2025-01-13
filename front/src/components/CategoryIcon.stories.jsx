@@ -7,7 +7,7 @@ const imageIcon1 = {
 };
 
 const imageIcon2 = {
-  src: "3.png",
+  src: "Pic1.png",
   alt: "this is a local image",
   title: "this is an image",
 };
@@ -17,10 +17,10 @@ export default {
 };
 
 export const ExternalImageIcon = {
-  args: { imageIcon: imageIcon1, size: "small" },
+  args: { imageIcon: imageIcon1, backgroundColor: "green" },
   argTypes: {
-    size: {
-      options: ["small", "medium", "large"],
+    backgroundColor: {
+      options: ["orange", "blue", "green"],
       control: { type: "select" },
     },
   },
@@ -28,10 +28,10 @@ export const ExternalImageIcon = {
 };
 
 export const LocalImageIcon = {
-  args: { imageIcon: imageIcon2, size: "medium" },
+  args: { imageIcon: imageIcon2, backgroundColor: "red" },
   argTypes: {
-    size: {
-      options: ["small", "medium", "large"],
+    backgroundColor: {
+      options: ["pink", "red", "purple"],
       control: { type: "select" },
     },
   },
