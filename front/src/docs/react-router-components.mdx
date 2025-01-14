@@ -1,0 +1,25 @@
+# Using storybook with react-router-components
+
+In order to ensure that react router components work with storybook, you will need to do the following:
+
+##### 1.You will need to import memoryRouter from react-router-dom in the stories file of your component.
+
+##### 2. You will need to wrap your component in the memoryRouter.
+
+The code below shows an example:
+
+```
+
+export default {
+component: Logo,
+};
+
+export const LogoComponent = () => {
+return (
+   <MemoryRouter>
+      <Logo size={"sm"}></Logo>
+    </MemoryRouter>
+  );
+};
+
+```
