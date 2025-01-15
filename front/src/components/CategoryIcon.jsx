@@ -1,6 +1,6 @@
 import styles from "./CategoryIcon.module.scss";
 import PropTypes from "prop-types";
-import { getBackground } from "../utils/styles.jsx";
+import Card from "./Card";
 
 /** This component takes in an imageIcon (object) and a backgroundColor.
  * The imageIcon is build by an object with the following parameters:
@@ -19,12 +19,13 @@ export default function CategoryIcon({
     ? imgSrc
     : import.meta.env.VITE_IMAGE_PATH + imgSrc;
   return (
-    <div
-      className={styles.icon}
-      style={{ background: getBackground(backgroundColor) }}
-    >
-      <img src={imgSrc} alt={alt} title={title} />
-    </div>
+    <Card backgroundColor={backgroundColor}>
+      <div className={styles.icon}>
+        <Card backgroundColor={backgroundColor}>
+          <img src={imgSrc} alt={alt} title={title} />
+        </Card>
+      </div>
+    </Card>
   );
 }
 
