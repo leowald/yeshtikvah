@@ -7,7 +7,7 @@ import routes from "../src/routes.jsx";
 
 describe("group of tests for main.jsx", () => {
   it.each([
-    "about",
+    "page",
     "contact",
     "donate",
     "faq",
