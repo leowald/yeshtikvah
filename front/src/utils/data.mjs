@@ -60,29 +60,33 @@ Array.from({ length: 50 }).forEach(() => {
 });
 
 export function createMenuObject(child) {
-  const title = faker.helpers.arrayElement([
-    "Page",
-    "Account",
-    "Contact",
-    "Donate",
-    "FAQ",
-    "App",
-    "Pesukim",
-    "Shiurim",
-    "Sources",
-    "Stories",
-    "Subscribe",
-  ]);
-  if (!child) {
-    let randomNum = faker.helpers.rangeToNumber({ min: 0, max: 7 });
-    var childrenArray = faker.helpers.multiple(
-      () => createMenuObject("child"),
-      {
-        count: randomNum,
-      }
-    );
+  let menuItem = "";
+  if (Array.isArray(data.menu) && data.menu.length === 0 && !child) {
+    menuItem = "Stories";
+  } else {
+    menuItem = faker.helpers.arrayElement([
+      "Page",
+      "Account",
+      "Contact",
+      "Donate",
+      "FAQ",
+      "App",
+      "Pesukim",
+      "Shiurim",
+      "Sources",
+      "Subscribe",
+    ]);
   }
-  if (title == "App") {
+
+  let randomNum2 = faker.helpers.rangeToNumber({ min: 0, max: 1 });
+
+  if (!child && menuItem !== "Stories" && randomNum2 == 0) {
+    let randomNum = faker.helpers.rangeToNumber({ min: 0, max: 7 });
+    var childrenArray = faker.helpers.multiple(() => createMenuObject(), {
+      count: randomNum,
+    });
+  }
+  if (menuItem == "App") {
     return {
       id: faker.database.mongodbObjectId(),
       title: faker.word.noun(),
@@ -108,20 +112,20 @@ export function createMenuObject(child) {
     url:
       Array.isArray(childrenArray) && childrenArray.length !== 0
         ? ""
-        : `/${title.toLowerCase()}`,
+        : `/${menuItem.toLowerCase()}`,
     template:
       Array.isArray(childrenArray) && childrenArray.length !== 0
         ? ""
-        : `./pages/${title}`,
+        : `./pages/${menuItem}`,
     page_id:
       (Array.isArray(childrenArray) && childrenArray.length !== 0) ||
-      title !== "Page"
+      menuItem !== "Page"
         ? ""
         : faker.number.int(50),
   };
 }
 
-Array.from({ length: 10 }).forEach(() => {
+Array.from({ length: 5 }).forEach(() => {
   data.menu.push(createMenuObject());
 });
 
