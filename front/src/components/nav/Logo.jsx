@@ -38,7 +38,11 @@ export default function Logo({ size }) {
             role="logo"
             className={`${styles.logo} ${styles[size]}`}
             src={
-              size === "xl" ? logo[0]?.image.lg : `${logo[0]?.image[`${size}`]}`
+              size === "xl"
+                ? `${import.meta.env.VITE_IMAGE_PATH}` + logo[0]?.image.lg
+                : `${import.meta.env.VITE_IMAGE_PATH}${
+                    logo[0]?.image[`${size}`]
+                  }`
             }
             alt={logo[0]?.alt_text}
           />
