@@ -20,10 +20,8 @@ export function getBackground(background) {
   let backgroundGradient = "";
 
   if (typeof background == "string") {
-    console.log("string");
     return background;
   } else if (typeof background == "object") {
-    console.log("object");
     background.sideCorner
       ? (backgroundGradient = `linear-gradient(${background.sideCorner},`)
       : (backgroundGradient = `linear-gradient(`);
@@ -40,7 +38,6 @@ export function getBackground(background) {
     }
 
     backgroundGradient += ")";
-    console.log(backgroundGradient);
     return backgroundGradient;
   }
 }
