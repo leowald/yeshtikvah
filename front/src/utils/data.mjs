@@ -113,12 +113,12 @@ export function createMenuObject(child) {
     url:
       Array.isArray(childrenArray) && childrenArray.length !== 0
         ? ""
+        : menuItem === "Stories" || menuItem === "Page"
+        ? `/${menuItem.toLowerCase()}/:id`
         : `/${menuItem.toLowerCase()}`,
     template:
       Array.isArray(childrenArray) && childrenArray.length !== 0
         ? ""
-        : menuItem === "Stories" || menuItem === "Page"
-        ? `./pages/${menuItem}/:id`
         : `./pages/${menuItem}`,
     page_id:
       (Array.isArray(childrenArray) && childrenArray.length !== 0) ||
