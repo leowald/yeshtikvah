@@ -118,7 +118,7 @@ export function createMenuObject(child) {
       Array.isArray(childrenArray) && childrenArray.length !== 0
         ? ""
         : menuItem === "Stories" || menuItem === "Page"
-        ? `./pages/${menuItem}/:${faker.database.mongodbObjectId()}`
+        ? `./pages/${menuItem}/:id`
         : `./pages/${menuItem}`,
     page_id:
       (Array.isArray(childrenArray) && childrenArray.length !== 0) ||
