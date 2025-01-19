@@ -80,9 +80,10 @@ export function createMenuObject(child) {
 
   let randomNum2 = faker.helpers.rangeToNumber({ min: 0, max: 1 });
 
-  if (!child && menuItem !== "Stories" && randomNum2 == 0) {
+  if (child !== 2 && menuItem !== "Stories" && randomNum2 === 1) {
     let randomNum = faker.helpers.rangeToNumber({ min: 0, max: 7 });
-    var childrenArray = faker.helpers.multiple(() => createMenuObject(), {
+    child++;
+    var childrenArray = faker.helpers.multiple(() => createMenuObject(child), {
       count: randomNum,
     });
   }
@@ -126,7 +127,7 @@ export function createMenuObject(child) {
 }
 
 Array.from({ length: 5 }).forEach(() => {
-  data.menu.push(createMenuObject());
+  data.menu.push(createMenuObject(0));
 });
 
 console.log(JSON.stringify(data));
