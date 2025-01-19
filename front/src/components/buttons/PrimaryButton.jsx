@@ -1,9 +1,7 @@
 import Button from "../Button";
 import Error from "../Error";
-
 import { useState, useEffect } from "react";
 import axiosClient from "../../api/axiosClient.js";
-import { getBackground } from "../../utils/styles.jsx";
 
 /**
  *
@@ -28,10 +26,7 @@ export default function PrimaryButton({ ...extras }) {
   return (
     <>
       <div>
-        <Button
-          backgroundColor={getBackground(theme[0]?.primary_color)}
-          {...extras}
-        ></Button>
+        <Button backgroundColor={theme[0]?.primary_color} {...extras}></Button>
         {errorTheme && <Error errText={errorTheme}></Error>}
       </div>
     </>
