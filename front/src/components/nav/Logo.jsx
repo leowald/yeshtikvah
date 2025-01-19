@@ -1,12 +1,10 @@
 import PropTypes from "prop-types";
 import styles from "./Logo.module.scss";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import Error from "../Error";
 import axiosClient from "../../api/axiosClient.js";
+import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";
-import Image from "react-bootstrap/Image";
-
 /**
  * This component displays the logo of the website.
  * The image is taken in from the /logo api.
@@ -33,8 +31,8 @@ export default function Logo({ size }) {
   return (
     <>
       <Container>
-        <Link to="/">
-          <Image
+        <Nav.Link href="/">
+          <img
             role="logo"
             className={`${styles.logo} ${styles[size]}`}
             src={
@@ -46,7 +44,7 @@ export default function Logo({ size }) {
             }
             alt={logo[0]?.alt_text}
           />
-        </Link>
+        </Nav.Link>
 
         {errorLogo && <Error errText={errorLogo}></Error>}
       </Container>
