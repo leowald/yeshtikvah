@@ -1,5 +1,9 @@
+@import "../../sass/helpers/mixins";
+
 .logo {
-  padding: 10px;
+  @include media-query(1199px) {
+    max-width: 200px;
+  }
   max-width: 100%;
   height: auto;
   position: relative;

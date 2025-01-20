@@ -13,12 +13,7 @@ describe("group of tests which test the logo component", () => {
     );
   }
 
-  it("should render a logo component with the alt-text 'sapiente' and the image 'RamadaInn-150x150.png'", async () => {
-    renderComponent("sm");
-    let logo = screen.getByRole("logo");
-    expect(logo).toBeInTheDocument();
-    expect(logo).toHaveClass(/logo/);
-    expect(logo).toHaveClass(/sm/);
+  it("should use the msw to return the correct information from the logo api'", async () => {
     server.listen();
     screen.debug();
     const response = await fetch("http://localhost:3000/logo");

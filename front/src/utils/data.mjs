@@ -5,7 +5,7 @@ import { faker } from "@faker-js/faker";
 export const data = {
   categories: [],
   stories: [],
-  logo: [],
+  logo: {},
 };
 
 function ConvertToSlug(title) {
@@ -78,6 +78,6 @@ export function createLogo() {
   };
 }
 
-data.logo.push(createLogo());
+Object.assign(data.logo, createLogo());
 
 console.log(JSON.stringify(data));

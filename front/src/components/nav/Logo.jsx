@@ -39,12 +39,12 @@ export default function Logo({ size }) {
               className={`${styles.logo} ${styles[size]}`}
               src={
                 size === "xl"
-                  ? `${import.meta.env.VITE_IMAGE_PATH}` + logo[0]?.image.lg
+                  ? `${import.meta.env.VITE_IMAGE_PATH}` + logo?.image.lg
                   : `${import.meta.env.VITE_IMAGE_PATH}${
-                      logo[0]?.image[`${size}`]
+                      logo?.image[`${size}`]
                     }`
               }
-              alt={logo[0]?.alt_text}
+              alt={logo?.alt_text}
             />
           </Link>
         </Navbar.Brand>
