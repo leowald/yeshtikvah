@@ -91,6 +91,11 @@
 .button:hover {
   text-decoration: none;
 }
+
+.hover {
+  filter: grayscale(0.4);
+}
+
 .success {
   background-color: #28a745;
   color: $white;

@@ -1,0 +1,19 @@
+### Using the useHover hook
+
+This hook allows you to capture a mouse hover event without having to add the event handler to the element.
+
+Add the following import statements:
+
+`import { useRef } from "react";`  
+`import useHover from "../../hooks/useHover.jsx";`
+
+In your component, set the following variables:
+
+`const elementRef = useRef();`  
+`const hovered = useHover(elementRef);`
+
+and add this ref attribute to your element:
+
+`ref={elementRef}`
+
+The `hovered` variable will now be true on `mouseover` and false on `mouseout`.

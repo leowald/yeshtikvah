@@ -3,6 +3,7 @@ import { describe, expect, it } from "vitest";
 import Button from "../../src/components/Button";
 import "../../src/utils/styles.jsx";
 import { getBackground } from "../../src/utils/styles.jsx";
+import userEvent from "@testing-library/user-event";
 
 describe("group of tests which test the button component", () => {
   function renderComponent(
@@ -80,9 +81,20 @@ describe("group of tests which test the button component", () => {
     };
     renderComponent("text", "red", false, "", "", icon);
     expect(screen.getByTestId("topIcon")).toBeInTheDocument();
-
     expect(screen.getByTestId("topIcon")).toHaveAttribute("color", "pink");
   });
+
+  it("should render a button component with a green background and when hovered over, it should darken and vv.", async () => {
+    renderComponent("button text", "green");
+    let button = screen.getByRole("button");
+    expect(button).toHaveStyle("background: green");
+    const user = userEvent.setup();
+    await user.hover(button);
+    expect(button).toHaveClass(/hover/);
+    await user.unhover(button);
+    expect(button).not.toHaveClass(/hover/);
+  });
+
   /*it("should apply extra styles on button if passed in", () => {
     //let extraStyles = { border: "2px solid black", color: "red" };
     renderComponent(

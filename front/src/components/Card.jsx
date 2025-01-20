@@ -2,24 +2,20 @@ import styles from "./Card.module.scss";
 import "../utils/styles.jsx";
 import { getBackground } from "../utils/styles.jsx";
 import PropTypes from "prop-types";
-import { useState } from "react";
+import { useRef } from "react";
+import useHover from "../../hooks/useHover.jsx";
 
 /** This component creates a card around specific text with specific css including rounded edges etc. It also takes in a background color/gradient which then sets the background of the component accordingly. */
 
 export default function Card({ backgroundColor, children }) {
-  const [hover, updateHover] = useState(false);
-
-  function toggleHover() {
-    updateHover(!hover);
-  }
-
+  const elementRef = useRef();
+  const hovered = useHover(elementRef);
   return (
     <div
       role="card"
-      className={hover ? styles.cardhover : styles.card}
+      ref={elementRef}
+      className={hovered ? styles.cardhover : styles.card}
       style={{ background: getBackground(backgroundColor) }}
-      onMouseEnter={toggleHover}
-      onMouseLeave={toggleHover}
     >
       {children}
     </div>
