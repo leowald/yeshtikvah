@@ -2,7 +2,7 @@ import { db } from "./db";
 import { http, HttpResponse } from "msw";
 
 export const handlers = [
-  http.get("/logo", () => {
+  http.get("/theme", () => {
     return HttpResponse.json({
       primary_color: {
         colors: [

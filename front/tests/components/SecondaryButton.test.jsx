@@ -58,7 +58,7 @@ describe("group of tests which test the Secondary Button component", () => {
       bgHeaderColor: "#18afd0",
       id: "8419",
     };
-    expect(themeInfo[0]).toMatchObject(themeInfoApi);
+    expect(themeInfo).toMatchObject(themeInfoApi);
     let color = themeInfoApi.secondary_color;
     renderComponent("text", color);
     let button = screen.getByRole("button");
