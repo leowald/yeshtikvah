@@ -8,7 +8,7 @@ export const data = {
   stories: [],
   menu: [],
   logo: [],
-
+  theme: {},
 };
 
 const categoryID = [];
@@ -80,7 +80,6 @@ export function createRandomStory() {
 Array.from({ length: 50 }).forEach(() => {
   data.stories.push(createRandomStory());
 });
-
 
 export function createMenuObject(child) {
   let menuItem = "";
@@ -179,5 +178,26 @@ export function createLogo() {
 
 data.logo.push(createLogo());
 
+export function createRandomTheme() {
+  return {
+    primary_color: {
+      colors: [
+        {
+          color: faker.color.rgb({ format: "hex", casing: "lower" }),
+          deg: "0%",
+        },
+        {
+          color: faker.color.rgb({ format: "hex", casing: "lower" }),
+          deg: "99.48%",
+        },
+      ],
+      sideCorner: "180deg",
+    },
+    secondary_color: faker.color.rgb({ format: "hex", casing: "lower" }),
+    bgHeaderColor: faker.color.rgb({ format: "hex", casing: "lower" }),
+  };
+}
+
+Object.assign(data.theme, createRandomTheme());
 
 console.log(JSON.stringify(data));
