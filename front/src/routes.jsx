@@ -1,5 +1,5 @@
 import App from "./App.jsx";
-import About from "./pages/About";
+import Page from "./pages/Page";
 import Contact from "./pages/Contact";
 import Donate from "./pages/Donate";
 import FAQ from "./pages/FAQ";
@@ -26,8 +26,8 @@ const routes = [
             element: <App />,
           },
           {
-            path: "/about",
-            element: <About />,
+            path: "/page/:id",
+            element: <Page />,
           },
           {
             path: "/contact",

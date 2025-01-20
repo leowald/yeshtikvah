@@ -6,6 +6,8 @@ export const data = {
   categories: [],
   stories: [],
   menu: [],
+  logo: [],
+
 };
 
 function ConvertToSlug(title) {
@@ -58,6 +60,7 @@ export function createRandomStory() {
 Array.from({ length: 50 }).forEach(() => {
   data.stories.push(createRandomStory());
 });
+
 
 export function createMenuObject(child) {
   let menuItem = "";
@@ -129,7 +132,32 @@ export function createMenuObject(child) {
 }
 
 Array.from({ length: 5 }).forEach(() => {
+
   data.menu.push(createMenuObject(0));
+  
+
 });
+
+export function createLogo() {
+  // get random logo from array
+  const imgName = faker.helpers.arrayElement([
+    "ATT",
+    "AE",
+    "HM",
+    "IBM",
+    "RamadaInn",
+  ]);
+  return {
+    alt_text: faker.lorem.words({ min: 1, max: 3 }),
+    image: {
+      sm: `${imgName}-150x150.png`,
+      md: `${imgName}-300x300.png`,
+      lg: `${imgName}.png`,
+    },
+  };
+}
+
+data.logo.push(createLogo());
+
 
 console.log(JSON.stringify(data));
