@@ -1,9 +1,10 @@
 import PropTypes from "prop-types";
 import styles from "./Logo.module.scss";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import Error from "../Error";
 import axiosClient from "../../api/axiosClient.js";
-import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
 /**
  * This component displays the logo of the website.
@@ -31,20 +32,22 @@ export default function Logo({ size }) {
   return (
     <>
       <Container>
-        <Nav.Link href="/">
-          <img
-            role="logo"
-            className={`${styles.logo} ${styles[size]}`}
-            src={
-              size === "xl"
-                ? `${import.meta.env.VITE_IMAGE_PATH}` + logo[0]?.image.lg
-                : `${import.meta.env.VITE_IMAGE_PATH}${
-                    logo[0]?.image[`${size}`]
-                  }`
-            }
-            alt={logo[0]?.alt_text}
-          />
-        </Nav.Link>
+        <Navbar.Brand>
+          <Link to="/">
+            <img
+              role="logo"
+              className={`${styles.logo} ${styles[size]}`}
+              src={
+                size === "xl"
+                  ? `${import.meta.env.VITE_IMAGE_PATH}` + logo[0]?.image.lg
+                  : `${import.meta.env.VITE_IMAGE_PATH}${
+                      logo[0]?.image[`${size}`]
+                    }`
+              }
+              alt={logo[0]?.alt_text}
+            />
+          </Link>
+        </Navbar.Brand>
 
         {errorLogo && <Error errText={errorLogo}></Error>}
       </Container>
