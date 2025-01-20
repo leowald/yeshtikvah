@@ -1,13 +1,7 @@
-
-
 // helpers
 @import "./sass/helpers/variables";
 @import "./sass/helpers/functions";
 @import "./sass/helpers/mixins";
-
-// base
-@import "./sass/base/base";
-
 
 // components
 @import "./sass/components/section-title";
@@ -26,7 +20,6 @@
 
 // components
 @import "./sass/components/sticky-header";
-
 
 // page
 @import "./sass/page/home-default";

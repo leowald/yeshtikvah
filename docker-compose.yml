@@ -70,6 +70,7 @@ services:
     command: npm test
     ports:
       - "51204:51204"
+    env_file: .env
     stdin_open: true
     tty: true
   storybook:
@@ -80,6 +81,7 @@ services:
     command: npm run storybook
     ports:
       - "6006:6006"
+    env_file: .env
     stdin_open: true
     tty: true
     environment:

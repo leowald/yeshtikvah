@@ -6,6 +6,9 @@ import { Children } from "react";
 export const data = {
   categories: [],
   stories: [],
+  menu: [],
+  logo: [],
+
 };
 
 const categoryID = [];
@@ -77,5 +80,104 @@ export function createRandomStory() {
 Array.from({ length: 50 }).forEach(() => {
   data.stories.push(createRandomStory());
 });
+
+
+export function createMenuObject(child) {
+  let menuItem = "";
+  if (Array.isArray(data.menu) && data.menu.length === 0 && !child) {
+    menuItem = "Stories";
+  } else {
+    menuItem = faker.helpers.arrayElement([
+      "Page",
+      "Account",
+      "Contact",
+      "Donate",
+      "FAQ",
+      "App",
+      "Pesukim",
+      "Shiurim",
+      "Sources",
+      "Subscribe",
+    ]);
+  }
+
+  let randomNum2 = faker.helpers.rangeToNumber({ min: 0, max: 1 });
+
+  if (child !== 2 && menuItem !== "Stories" && randomNum2 === 1) {
+    let randomNum = faker.helpers.rangeToNumber({ min: 0, max: 7 });
+    child++;
+    var childrenArray = faker.helpers.multiple(() => createMenuObject(child), {
+      count: randomNum,
+    });
+  }
+  if (menuItem == "App") {
+    return {
+      id: faker.database.mongodbObjectId(),
+      title: faker.word.noun(),
+      children:
+        Array.isArray(childrenArray) && childrenArray.length !== 0
+          ? childrenArray
+          : "",
+      url:
+        Array.isArray(childrenArray) && childrenArray.length !== 0 ? "" : `/`,
+      template:
+        Array.isArray(childrenArray) && childrenArray.length !== 0
+          ? ""
+          : `./App`,
+    };
+  }
+  return {
+    id: faker.database.mongodbObjectId(),
+    title: faker.word.noun(),
+    children:
+      Array.isArray(childrenArray) && childrenArray.length !== 0
+        ? childrenArray
+        : "",
+    url:
+      Array.isArray(childrenArray) && childrenArray.length !== 0
+        ? ""
+        : menuItem === "Stories" || menuItem === "Page"
+        ? `/${menuItem.toLowerCase()}/:id`
+        : `/${menuItem.toLowerCase()}`,
+    template:
+      Array.isArray(childrenArray) && childrenArray.length !== 0
+        ? ""
+        : `./pages/${menuItem}`,
+    page_id:
+      (Array.isArray(childrenArray) && childrenArray.length !== 0) ||
+      menuItem !== "Page"
+        ? ""
+        : faker.number.int(50),
+  };
+}
+
+Array.from({ length: 5 }).forEach(() => {
+
+  data.menu.push(createMenuObject(0));
+  
+
+});
+
+export function createLogo() {
+  // get random logo from array
+  const imgName = faker.helpers.arrayElement([
+    "ATT",
+    "AE",
+    "HM",
+    "IBM",
+    "RamadaInn",
+  ]);
+  return {
+    alt_text: faker.lorem.words({ min: 1, max: 3 }),
+    image: {
+      sm: `${imgName}-150x150.png`,
+      md: `${imgName}-300x300.png`,
+      lg: `${imgName}.png`,
+    },
+  };
+}
+
+data.logo.push(createLogo());
+
 
 console.log(JSON.stringify(data));

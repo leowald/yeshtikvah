@@ -7,7 +7,7 @@ import routes from "../src/routes.jsx";
 
 describe("group of tests for main.jsx", () => {
   it.each([
-    "about",
+    "page",
     "contact",
     "donate",
     "faq",
@@ -23,8 +23,10 @@ describe("group of tests for main.jsx", () => {
     render(<RouterProvider router={router} />);
     expect(
       // need to use RegExp to apply regEx to a variable
-      screen.getByRole("heading", { name: new RegExp(loc, "i") })
+      screen.getByRole("heading", { name: new RegExp(`${loc} page`, "i") })
     ).toBeInTheDocument();
+    expect(screen.getByRole("header")).toBeInTheDocument();
+    expect(screen.getByRole("footer")).toBeInTheDocument();
   });
 
   it("should correctly route to the App page", () => {
@@ -35,6 +37,8 @@ describe("group of tests for main.jsx", () => {
     expect(
       screen.getByText(/be inspired and inspire others/i)
     ).toBeInTheDocument();
+    expect(screen.getByRole("header")).toBeInTheDocument();
+    expect(screen.getByRole("footer")).toBeInTheDocument();
   });
 
   it("should correctly route to the stories subtopic", () => {
@@ -45,5 +49,14 @@ describe("group of tests for main.jsx", () => {
     expect(
       screen.getByRole("heading", { name: /health/i })
     ).toBeInTheDocument();
+    expect(screen.getByRole("header")).toBeInTheDocument();
+    expect(screen.getByRole("footer")).toBeInTheDocument();
+  });
+  it("should route to page not found if incorrect route is inserted", () => {
+    const router = createMemoryRouter(routes, {
+      initialEntries: ["/abc"],
+    });
+    render(<RouterProvider router={router} />);
+    expect(screen.getByRole("heading", { name: /oops/i })).toBeInTheDocument();
   });
 });
