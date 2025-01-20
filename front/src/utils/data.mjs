@@ -50,7 +50,7 @@ export function createRandomCategory() {
     image: faker.image.avatar(),
     iconColor: [faker.color.rgb(), faker.color.rgb()],
     color: faker.color.rgb(),
-    category_children: category_children.length > 0 ? category_children : 0,
+    children: category_children.length > 0 ? category_children : 0,
   };
 }
 
