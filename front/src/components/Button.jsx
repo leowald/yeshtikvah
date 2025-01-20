@@ -3,6 +3,8 @@ import style from "./Button.module.scss";
 import PropTypes from "prop-types";
 import Icon from "./Icon.jsx";
 import { getBackground } from "../utils/styles.jsx";
+import { useRef } from "react";
+import useHover from "../../hooks/useHover.jsx";
 
 /** This component creates a button in various sizes, colors and designs, with an option of adding an icon as well. */
 
@@ -17,6 +19,9 @@ export default function Button({
   onClickFunction,
   ...extras /** Option to add any style, e.g. "border: 2px solid black" etc. */
 }) {
+  const elementRef = useRef();
+  const hovered = useHover(elementRef);
+
   /**style for button based on props*/
   const buttonStyle = {
     background: !outline ? getBackground(backgroundColor) : "white",
@@ -60,10 +65,11 @@ export default function Button({
   return (
     <div>
       <button
+        ref={elementRef}
         style={!theme ? buttonStyle : { ...extras }}
         onClick={onClickFunction}
         type="button"
-        className={btnClass}
+        className={`${btnClass} ${hovered && style.hover}`}
       >
         {icon && iconPosition && <Icon {...icon}></Icon>}
         <div className={textClass} style={outline ? textGradient : {}}>
