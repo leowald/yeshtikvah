@@ -1,4 +1,4 @@
-//creates fake information using 'faker' to produce catagories and stories and add them to the db.json file
+//creates fake information using 'faker' to produce categories and stories and add them to the db.json file
 
 import { faker } from "@faker-js/faker";
 import { Children } from "react";
@@ -62,7 +62,7 @@ export function createRandomStory() {
   return {
     id: faker.database.mongodbObjectId(),
     date: faker.date.recent().toLocaleDateString(),
-    catagaory_id: categoryID[faker.number.int(categoryID.length - 1)],
+    category_id: categoryID[faker.number.int(categoryID.length - 1)],
     source: faker.lorem.word(),
     views: faker.number.int(500),
     shares: faker.number.int(500),
