@@ -86,16 +86,12 @@ describe("group of tests which test the button component", () => {
 
   it("should render a button component with a green background and when hovered over, it should darken and vv.", async () => {
     renderComponent("button text", "green");
-    screen.debug();
-
     let button = screen.getByRole("button");
     expect(button).toHaveStyle("background: green");
     const user = userEvent.setup();
     await user.hover(button);
-    screen.debug();
     expect(button).toHaveClass(/hover/);
     await user.unhover(button);
-    screen.debug();
     expect(button).not.toHaveClass(/hover/);
   });
 
