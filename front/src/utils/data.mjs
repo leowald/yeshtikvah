@@ -7,7 +7,7 @@ export const data = {
   stories: [],
   menu: [],
   logo: [],
-  theme: [],
+  theme: {},
 };
 
 function ConvertToSlug(title) {
@@ -168,8 +168,6 @@ export function createRandomTheme() {
   };
 }
 
-Array.from({ length: 1 }).forEach(() => {
-  data.theme.push(createRandomTheme());
-});
+Object.assign(data.theme, createRandomTheme());
 
 console.log(JSON.stringify(data));

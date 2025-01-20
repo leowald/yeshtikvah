@@ -26,7 +26,7 @@ export default function PrimaryButton({ ...extras }) {
   return (
     <>
       <div>
-        <Button backgroundColor={theme[0]?.primary_color} {...extras}></Button>
+        <Button backgroundColor={theme?.primary_color} {...extras}></Button>
         {errorTheme && <Error errText={errorTheme}></Error>}
       </div>
     </>

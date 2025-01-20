@@ -26,11 +26,7 @@ export default function SecondaryButton({ ...extras }) {
   return (
     <>
       <div>
-        <Button
-          backgroundColor={theme[0]?.secondary_color}
-          {...extras}
-        ></Button>
-
+        <Button backgroundColor={theme?.secondary_color} {...extras}></Button>
         {errorTheme && <Error errText={errorTheme}></Error>}
       </div>
     </>
